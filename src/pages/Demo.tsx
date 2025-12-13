@@ -134,22 +134,30 @@ export default function Demo() {
         },
     });
 
-    async function onSubmit(data: DemoFormValues) {
-        try {
-            const res = await fetch("/api/demo", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data),
-            });
+    async function submitDemo(formData: {
+        name: string;
+        email: string;
+        phone?: string;
+        company: string;
+        companySize?: string;
+        industry?: string;
+        challenge?: string;
+    }) {
+        const res = await fetch("/api/demo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        });
 
-            if (!res.ok) throw new Error("Request failed");
-
-            toast.success("Demo request sent! Our team will contact you shortly.");
-            form.reset();
-        } catch {
-            toast.error("Something went wrong. Please try again or contact support.");
+        if (!res.ok) {
+            throw new Error("Demo request failed");
         }
+
+        return res.json();
     }
+
 
     return (
         <>

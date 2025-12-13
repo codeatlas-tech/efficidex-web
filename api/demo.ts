@@ -1,11 +1,12 @@
-import { Router } from "express";
 import { Resend } from "resend";
-import { env } from "../config/env";
 
-const router = Router();
-const resend = new Resend(env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY!);
 
-router.post("/", async (req, res) => {
+export default async function handler(req: any, res: any) {
+    if (req.method !== "POST") {
+        return res.status(405).json({ error: "Method not allowed" });
+    }
+
     const {
         name,
         email,
@@ -14,16 +15,19 @@ router.post("/", async (req, res) => {
         companySize,
         industry,
         challenge,
-    } = req.body;
+    } = req.body || {};
+
+    if (!name || !email || !company) {
+        return res.status(400).json({ error: "Missing required fields" });
+    }
 
     try {
-        // 1️⃣ Internal notification
+        // YOU get this email
         await resend.emails.send({
             from: "Efficidex <support@efficidex.com>",
             to: ["support@efficidex.com"],
             subject: `🚀 Demo Request — ${company}`,
             html: `
-        <h2>New Demo Request</h2>
         <p><b>Name:</b> ${name}</p>
         <p><b>Email:</b> ${email}</p>
         <p><b>Phone:</b> ${phone}</p>
@@ -34,37 +38,22 @@ router.post("/", async (req, res) => {
       `,
         });
 
-        // 2️⃣ Auto-reply to user
+        // Auto-reply to user
         await resend.emails.send({
             from: "Efficidex <support@efficidex.com>",
             to: [email],
             subject: "We received your demo request",
             html: `
         <p>Hi ${name},</p>
-
-        <p>Thanks for requesting a demo of <strong>Efficidex</strong>.</p>
-
-        <p>Our team has received your request and will reach out shortly
-        to schedule a personalized walkthrough.</p>
-
-        <p><strong>What happens next:</strong></p>
-        <ul>
-          <li>We review your use case</li>
-          <li>We contact you within 24 hours</li>
-          <li>We tailor the demo to your workflows</li>
-        </ul>
-
-        <p>If anything is urgent, just reply to this email.</p>
-
+        <p>Thanks for requesting a demo of <b>Efficidex</b>.</p>
+        <p>Our team will contact you shortly.</p>
         <p>— Team Efficidex</p>
       `,
         });
 
-        res.json({ success: true });
+        return res.json({ success: true });
     } catch (err) {
-        console.error("Demo email failed", err);
-        res.status(500).json({ error: "Failed to send demo request" });
+        console.error(err);
+        return res.status(500).json({ error: "Email failed" });
     }
-});
-
-export default router;
+}

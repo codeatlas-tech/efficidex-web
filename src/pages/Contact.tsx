@@ -78,26 +78,28 @@ export default function Contact() {
         },
     });
 
-    async function onSubmit(data: ContactFormValues) {
-        try {
-            const res = await fetch("/api/contact", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data),
-            });
+    async function submitContact(formData: {
+        name: string;
+        email: string;
+        phone?: string;
+        company?: string;
+        industry?: string;
+        message: string;
+    }) {
+        const res = await fetch("/api/contact", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        });
 
-            if (!res.ok) {
-                throw new Error("Failed request");
-            }
-
-            toast.success("Message sent! Our team will reach out shortly.");
-            form.reset();
-        } catch {
-            toast.error("Failed to send message. Please try again.");
+        if (!res.ok) {
+            throw new Error("Contact form failed");
         }
+
+        return res.json();
     }
-
-
 
     return (
         <div className="min-h-screen bg-background">
