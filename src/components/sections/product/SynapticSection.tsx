@@ -1,0 +1,105 @@
+import { motion } from "framer-motion";
+import {
+    Brain,
+    TrendingDown,
+    AlertCircle,
+    BarChart2,
+    Lightbulb,
+} from "lucide-react";
+
+type OutputItem = {
+    icon: React.ElementType;
+    label: string;
+    description: string;
+};
+
+const outputs: OutputItem[] = [
+    {
+        icon: AlertCircle,
+        label: "Bottleneck insights",
+        description: "Identify workflow slowdowns",
+    },
+    {
+        icon: TrendingDown,
+        label: "Cost reduction opportunities",
+        description: "Find savings across ops",
+    },
+    {
+        icon: BarChart2,
+        label: "SLA risks",
+        description: "Predict deadline failures",
+    },
+    {
+        icon: Brain,
+        label: "Workload forecasting",
+        description: "Plan capacity proactively",
+    },
+    {
+        icon: Lightbulb,
+        label: "Workflow improvements",
+        description: "AI-suggested optimizations",
+    },
+];
+
+export function SynapticSection() {
+    return (
+        <section className="py-20">
+            <div className="section-container">
+
+                {/* Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="text-center mb-12"
+                >
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
+                        <Brain size={18} />
+                        <span className="text-sm font-medium">Synaptic Intelligence</span>
+                    </div>
+
+                    <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                        Your AI operations strategist.
+                    </h2>
+
+                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                        Synaptic analyses cross-department patterns, highlights inefficiencies,
+                        predicts failures, and recommends improvements.
+                    </p>
+                </motion.div>
+
+                {/* Output Cards */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {outputs.map((output, index) => {
+                        const Icon = output.icon;
+
+                        return (
+                            <motion.div
+                                key={output.label}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.4, delay: index * 0.1 }}
+                                className="p-6 rounded-2xl border border-border bg-card hover:border-primary/30 hover:shadow-md transition-all duration-300"
+                            >
+                                <div className="inline-flex p-3 rounded-xl bg-secondary mb-4">
+                                    <Icon size={24} className="text-primary" />
+                                </div>
+
+                                <h3 className="font-semibold text-foreground mb-2">
+                                    {output.label}
+                                </h3>
+
+                                <p className="text-sm text-muted-foreground">
+                                    {output.description}
+                                </p>
+                            </motion.div>
+                        );
+                    })}
+                </div>
+
+            </div>
+        </section>
+    );
+}
