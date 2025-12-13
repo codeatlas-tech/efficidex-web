@@ -22,7 +22,6 @@
   <meta property="og:image" content="https://efficidex.com/og-image.png" />
   <meta property="og:url" content="https://efficidex.com/" />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Efficidex" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -33,20 +32,30 @@
 
   <!-- Structured Data -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Efficidex",
-    "url": "https://efficidex.com",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "All",
-    "description": "Autonomous AI agents that take calls, understand intent, and automate workflows end-to-end.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Efficidex"
-    }
-  }
-  </script>
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Efficidex",
+        "url": "https://efficidex.com",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "description": "Autonomous AI agents that take calls, understand intent, and automate workflows end-to-end.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Efficidex"
+        }
+      }
+    </script>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
 </head>
+
+<body>
+  <!-- THIS WAS MISSING -->
+  <div id="root"></div>
+
+  <!-- THIS WAS MISSING -->
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "@/assets/efficidex-logo.png";
 
 type FooterLink = {
     label: string;
@@ -50,10 +51,8 @@ export function Footer() {
 
                     {/* Logo */}
                     <div className="col-span-2 md:col-span-1">
-                        <Link to="/" className="flex items-center gap-2 mb-4">
-                            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                                <span className="text-sm font-bold text-primary-foreground">E</span>
-                            </div>
+                        <Link to="/" className="flex items-center gap-2">
+                            <img src={logo} alt="Efficidex" className="h-8 w-8 rounded-full" />
                             <span className="text-lg font-semibold">Efficidex</span>
                         </Link>
 
