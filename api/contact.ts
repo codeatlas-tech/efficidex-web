@@ -7,7 +7,7 @@ export default async function handler(req: any, res: any) {
         return res.status(405).json({ error: "Method not allowed" });
     }
 
-    const { name, email, phone, company, industry, message } = req.body || {};
+    const { name, email, phone, company, industry, message } = req.body;
 
     if (!name || !email || !message) {
         return res.status(400).json({ error: "Missing required fields" });
@@ -17,30 +17,18 @@ export default async function handler(req: any, res: any) {
         await resend.emails.send({
             from: "Efficidex <support@efficidex.com>",
             to: ["support@efficidex.com"],
-            subject: `📩 New Contact — ${name}`,
+            subject: `New Contact — ${name}`,
             html: `
         <p><b>Name:</b> ${name}</p>
         <p><b>Email:</b> ${email}</p>
-        <p><b>Phone:</b> ${phone}</p>
-        <p><b>Company:</b> ${company}</p>
-        <p><b>Industry:</b> ${industry}</p>
+        <p><b>Phone:</b> ${phone || "-"}</p>
+        <p><b>Company:</b> ${company || "-"}</p>
+        <p><b>Industry:</b> ${industry || "-"}</p>
         <p><b>Message:</b><br/>${message}</p>
       `,
         });
 
-        await resend.emails.send({
-            from: "Efficidex <support@efficidex.com>",
-            to: [email],
-            subject: "We received your message",
-            html: `
-        <p>Hi ${name},</p>
-        <p>Thanks for contacting Efficidex.</p>
-        <p>We’ll get back to you shortly.</p>
-        <p>— Team Efficidex</p>
-      `,
-        });
-
-        return res.json({ success: true });
+        return res.status(200).json({ success: true });
     } catch (err) {
         console.error(err);
         return res.status(500).json({ error: "Email failed" });

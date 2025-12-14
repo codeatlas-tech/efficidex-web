@@ -95,7 +95,7 @@ export default function Contact() {
         });
 
         if (!res.ok) {
-            throw new Error("Contact form failed");
+            throw new Error("Contact submission failed");
         }
 
         return res.json();
