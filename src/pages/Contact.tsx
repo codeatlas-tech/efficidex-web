@@ -4,7 +4,6 @@ import { z } from "zod";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 
-
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
@@ -29,21 +28,20 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 
-
 import { Mail, Phone, Send } from "lucide-react";
 
 const contactFormSchema = z.object({
-    name: z.string().trim().min(2).max(100),
-    email: z.string().trim().email().max(255),
+    name: z.string().trim().min(2, "Name must be at least 2 characters").max(100),
+    email: z.string().trim().email("Invalid email address").max(255),
     phone: z
         .string()
         .trim()
-        .min(10)
+        .min(10, "Phone number must be at least 10 digits")
         .max(20)
         .regex(/^[\d\s\-\+\(\)]+$/, "Invalid phone number"),
-    company: z.string().trim().min(2).max(100),
+    company: z.string().trim().min(2, "Company name must be at least 2 characters").max(100),
     industry: z.string().min(1, "Please select an industry"),
-    message: z.string().trim().min(10).max(1000),
+    message: z.string().trim().min(10, "Message must be at least 10 characters").max(1000),
 });
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
@@ -64,8 +62,6 @@ const industries = [
 ];
 
 export default function Contact() {
-
-
     const form = useForm<ContactFormValues>({
         resolver: zodResolver(contactFormSchema),
         defaultValues: {
@@ -78,14 +74,7 @@ export default function Contact() {
         },
     });
 
-    async function submitContact(formData: {
-        name: string;
-        email: string;
-        phone?: string;
-        company?: string;
-        industry?: string;
-        message: string;
-    }) {
+    async function submitContact(formData: ContactFormValues) {
         const res = await fetch("/api/contact", {
             method: "POST",
             headers: {
@@ -95,15 +84,25 @@ export default function Contact() {
         });
 
         if (!res.ok) {
-            throw new Error("Contact submission failed");
+            throw new Error("Contact form submission failed");
         }
 
         return res.json();
     }
 
+    const onSubmit = async (data: ContactFormValues) => {
+        try {
+            await submitContact(data);
+            toast.success("Message sent successfully! We'll get back to you soon.");
+            form.reset();
+        } catch (error) {
+            toast.error("Failed to send message. Please try again.");
+            console.error(error);
+        }
+    };
+
     return (
         <div className="min-h-screen bg-background">
-
             <Header />
 
             {/* HERO */}
@@ -112,7 +111,7 @@ export default function Contact() {
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
                         <h1 className="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
                         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                            We’re here to help you automate your operations and scale effortlessly.
+                            We're here to help you automate your operations and scale effortlessly.
                         </p>
                     </motion.div>
                 </div>
@@ -122,7 +121,6 @@ export default function Contact() {
             <section className="py-16">
                 <div className="section-container">
                     <div className="grid lg:grid-cols-3 gap-12">
-
                         {/* CONTACT INFO */}
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
@@ -162,17 +160,37 @@ export default function Contact() {
                             <div className="card-elevated p-8">
                                 <Form {...form}>
                                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-
                                         {/* Name / Email */}
                                         <div className="grid md:grid-cols-2 gap-6">
-                                            <TextField control={form.control} name="name" label="Full Name" placeholder="John Doe" />
-                                            <TextField control={form.control} name="email" label="Email" placeholder="john@company.com" type="email" />
+                                            <TextField
+                                                control={form.control}
+                                                name="name"
+                                                label="Full Name"
+                                                placeholder="John Doe"
+                                            />
+                                            <TextField
+                                                control={form.control}
+                                                name="email"
+                                                label="Email"
+                                                placeholder="john@company.com"
+                                                type="email"
+                                            />
                                         </div>
 
                                         {/* Phone / Company */}
                                         <div className="grid md:grid-cols-2 gap-6">
-                                            <TextField control={form.control} name="phone" label="Phone Number" placeholder="+91 98765 43210" />
-                                            <TextField control={form.control} name="company" label="Company" placeholder="Acme Inc." />
+                                            <TextField
+                                                control={form.control}
+                                                name="phone"
+                                                label="Phone Number"
+                                                placeholder="+91 98765 43210"
+                                            />
+                                            <TextField
+                                                control={form.control}
+                                                name="company"
+                                                label="Company"
+                                                placeholder="Acme Inc."
+                                            />
                                         </div>
 
                                         {/* Industry */}
@@ -220,14 +238,19 @@ export default function Contact() {
                                             )}
                                         />
 
-                                        <Button type="submit" size="lg" className="w-full md:w-auto">
-                                            Send Message <Send className="ml-2 h-4 w-4" />
+                                        <Button
+                                            type="submit"
+                                            size="lg"
+                                            className="w-full md:w-auto"
+                                            disabled={form.formState.isSubmitting}
+                                        >
+                                            {form.formState.isSubmitting ? "Sending..." : "Send Message"}
+                                            <Send className="ml-2 h-4 w-4" />
                                         </Button>
                                     </form>
                                 </Form>
                             </div>
                         </motion.div>
-
                     </div>
                 </div>
             </section>
@@ -255,7 +278,7 @@ function InfoItem({ icon: Icon, label, value, href }: any) {
     );
 }
 
-function TextField({ control, name, label, placeholder, type = "text" }) {
+function TextField({ control, name, label, placeholder, type = "text" }: any) {
     return (
         <FormField
             control={control}

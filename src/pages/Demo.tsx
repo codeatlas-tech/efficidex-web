@@ -28,7 +28,6 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 
-
 import {
     Play,
     Clock,
@@ -40,18 +39,18 @@ import {
 } from "lucide-react";
 
 const demoFormSchema = z.object({
-    name: z.string().trim().min(2).max(100),
-    email: z.string().trim().email().max(255),
+    name: z.string().trim().min(2, "Name must be at least 2 characters").max(100),
+    email: z.string().trim().email("Invalid email address").max(255),
     phone: z
         .string()
         .trim()
-        .min(10)
+        .min(10, "Phone number must be at least 10 digits")
         .max(20)
         .regex(/^[\d\s\-\+\(\)]+$/, "Please enter a valid phone number"),
-    company: z.string().trim().min(2).max(100),
-    companySize: z.string().min(1),
-    industry: z.string().min(1),
-    challenge: z.string().trim().min(10).max(500),
+    company: z.string().trim().min(2, "Company name must be at least 2 characters").max(100),
+    companySize: z.string().min(1, "Please select company size"),
+    industry: z.string().min(1, "Please select an industry"),
+    challenge: z.string().trim().min(10, "Challenge description must be at least 10 characters").max(500),
 });
 
 type DemoFormValues = z.infer<typeof demoFormSchema>;
@@ -120,7 +119,6 @@ const benefits = [
 ];
 
 export default function Demo() {
-
     const form = useForm<DemoFormValues>({
         resolver: zodResolver(demoFormSchema),
         defaultValues: {
@@ -134,325 +132,327 @@ export default function Demo() {
         },
     });
 
-    async function submitDemo(formData: {
-        name: string;
-        email: string;
-        phone?: string;
-        company: string;
-        companySize?: string;
-        industry?: string;
-        challenge?: string;
-    }) {
+    async function submitDemo(formData: DemoFormValues) {
         const res = await fetch("/api/demo", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData),
         });
 
         if (!res.ok) {
-            throw new Error("Demo request failed");
+            throw new Error("Demo submission failed");
         }
 
         return res.json();
     }
 
+    const onSubmit = async (data: DemoFormValues) => {
+        try {
+            await submitDemo(data);
+            toast.success("Demo request received! We'll contact you within 24 hours.");
+            form.reset();
+        } catch (error) {
+            toast.error("Failed to submit demo request. Please try again.");
+            console.error(error);
+        }
+    };
 
     return (
-        <>
+        <div className="min-h-screen bg-background">
+            <Header />
 
-            <div className="min-h-screen bg-background">
-                <Header />
+            {/* Hero */}
+            <section className="pt-32 pb-16 bg-gradient-to-b from-accent/5 to-background">
+                <div className="section-container">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="text-center max-w-3xl mx-auto"
+                    >
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent mb-6">
+                            <Play className="w-4 h-4" />
+                            <span className="text-sm font-medium">Live Product Demo</span>
+                        </div>
 
-                {/* Hero */}
-                <section className="pt-32 pb-16 bg-gradient-to-b from-accent/5 to-background">
-                    <div className="section-container">
+                        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+                            See Efficidex in Action
+                        </h1>
+                        <p className="text-xl text-muted-foreground">
+                            Get a personalized 30-minute demo and discover how AI-powered
+                            automation can transform your operations.
+                        </p>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* Features */}
+            <section className="py-16 border-b border-border">
+                <div className="section-container">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="text-center mb-12"
+                    >
+                        <h2 className="text-3xl font-bold mb-4">What You'll Experience</h2>
+                        <p className="text-muted-foreground max-w-2xl mx-auto">
+                            Our demos are tailored to your specific industry and challenges
+                        </p>
+                    </motion.div>
+
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {demoFeatures.map((feature, index) => (
+                            <motion.div
+                                key={feature.title}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{
+                                    duration: 0.5,
+                                    delay: 0.2 + index * 0.1,
+                                }}
+                                className="card-elevated p-6 text-center"
+                            >
+                                <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-4 text-accent">
+                                    {feature.icon}
+                                </div>
+                                <h3 className="font-semibold mb-2">{feature.title}</h3>
+                                <p className="text-sm text-muted-foreground">
+                                    {feature.description}
+                                </p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Demo Form */}
+            <section className="py-20">
+                <div className="section-container">
+                    <div className="grid lg:grid-cols-5 gap-12">
+                        {/* Benefits */}
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.5 }}
-                            className="text-center max-w-3xl mx-auto"
+                            className="lg:col-span-2 space-y-8"
                         >
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent mb-6">
-                                <Play className="w-4 h-4" />
-                                <span className="text-sm font-medium">Live Product Demo</span>
+                            <div>
+                                <div className="flex items-center gap-3 mb-4">
+                                    <Calendar className="w-6 h-6 text-accent" />
+                                    <h2 className="text-2xl font-semibold">
+                                        Schedule Your Demo
+                                    </h2>
+                                </div>
+
+                                <p className="text-muted-foreground">
+                                    Fill out the form and we'll reach out within 24 hours to find a
+                                    time that works for you.
+                                </p>
                             </div>
 
-                            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                                See Efficidex in Action
-                            </h1>
-                            <p className="text-xl text-muted-foreground">
-                                Get a personalized 30-minute demo and discover how AI-powered
-                                automation can transform your operations.
-                            </p>
-                        </motion.div>
-                    </div>
-                </section>
+                            <div className="space-y-4">
+                                {benefits.map((benefit, index) => (
+                                    <motion.div
+                                        key={benefit}
+                                        initial={{ opacity: 0, x: -15 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{
+                                            duration: 0.4,
+                                            delay: 0.3 + index * 0.1,
+                                        }}
+                                        className="flex items-start gap-3"
+                                    >
+                                        <CheckCircle className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                                        <span>{benefit}</span>
+                                    </motion.div>
+                                ))}
+                            </div>
 
-                {/* Features */}
-                <section className="py-16 border-b border-border">
-                    <div className="section-container">
+                            <div className="p-6 rounded-2xl bg-primary/5 border border-primary/10">
+                                <p className="text-sm text-muted-foreground mb-2">
+                                    Average demo duration
+                                </p>
+                                <p className="text-2xl font-bold">30 minutes</p>
+                                <p className="text-sm text-muted-foreground mt-2">
+                                    Followed by live Q&A and next steps discussion
+                                </p>
+                            </div>
+                        </motion.div>
+
+                        {/* Form */}
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.5 }}
-                            className="text-center mb-12"
+                            className="lg:col-span-3"
                         >
-                            <h2 className="text-3xl font-bold mb-4">What You'll Experience</h2>
-                            <p className="text-muted-foreground max-w-2xl mx-auto">
-                                Our demos are tailored to your specific industry and challenges
-                            </p>
-                        </motion.div>
-
-                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            {demoFeatures.map((feature, index) => (
-                                <motion.div
-                                    key={feature.title}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{
-                                        duration: 0.5,
-                                        delay: 0.2 + index * 0.1,
-                                    }}
-                                    className="card-elevated p-6 text-center"
-                                >
-                                    <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-4 text-accent">
-                                        {feature.icon}
-                                    </div>
-                                    <h3 className="font-semibold mb-2">{feature.title}</h3>
-                                    <p className="text-sm text-muted-foreground">
-                                        {feature.description}
-                                    </p>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* Demo Form */}
-                <section className="py-20">
-                    <div className="section-container">
-                        <div className="grid lg:grid-cols-5 gap-12">
-                            {/* Benefits */}
-                            <motion.div
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.5 }}
-                                className="lg:col-span-2 space-y-8"
-                            >
-                                <div>
-                                    <div className="flex items-center gap-3 mb-4">
-                                        <Calendar className="w-6 h-6 text-accent" />
-                                        <h2 className="text-2xl font-semibold">
-                                            Schedule Your Demo
-                                        </h2>
-                                    </div>
-
-                                    <p className="text-muted-foreground">
-                                        Fill out the form and we'll reach out within 24 hours to find a
-                                        time that works for you.
-                                    </p>
-                                </div>
-
-                                <div className="space-y-4">
-                                    {benefits.map((benefit, index) => (
-                                        <motion.div
-                                            key={benefit}
-                                            initial={{ opacity: 0, x: -15 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            transition={{
-                                                duration: 0.4,
-                                                delay: 0.3 + index * 0.1,
-                                            }}
-                                            className="flex items-start gap-3"
-                                        >
-                                            <CheckCircle className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                                            <span>{benefit}</span>
-                                        </motion.div>
-                                    ))}
-                                </div>
-
-                                <div className="p-6 rounded-2xl bg-primary/5 border border-primary/10">
-                                    <p className="text-sm text-muted-foreground mb-2">
-                                        Average demo duration
-                                    </p>
-                                    <p className="text-2xl font-bold">30 minutes</p>
-                                    <p className="text-sm text-muted-foreground mt-2">
-                                        Followed by live Q&A and next steps discussion
-                                    </p>
-                                </div>
-                            </motion.div>
-
-                            {/* Form */}
-                            <motion.div
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.5 }}
-                                className="lg:col-span-3"
-                            >
-                                <div className="card-elevated p-8">
-                                    <Form {...form}>
-                                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                                            {/* Row 1 */}
-                                            <div className="grid md:grid-cols-2 gap-6">
-                                                {/** Name */}
-                                                <FormField
-                                                    control={form.control}
-                                                    name="name"
-                                                    render={({ field }) => (
-                                                        <FormItem>
-                                                            <FormLabel>Full Name</FormLabel>
-                                                            <FormControl>
-                                                                <Input placeholder="John Doe" {...field} />
-                                                            </FormControl>
-                                                            <FormMessage />
-                                                        </FormItem>
-                                                    )}
-                                                />
-
-                                                {/** Email */}
-                                                <FormField
-                                                    control={form.control}
-                                                    name="email"
-                                                    render={({ field }) => (
-                                                        <FormItem>
-                                                            <FormLabel>Work Email</FormLabel>
-                                                            <FormControl>
-                                                                <Input placeholder="john@company.com" type="email" {...field} />
-                                                            </FormControl>
-                                                            <FormMessage />
-                                                        </FormItem>
-                                                    )}
-                                                />
-                                            </div>
-
-                                            {/* Row 2 */}
-                                            <div className="grid md:grid-cols-2 gap-6">
-                                                {/** Phone */}
-                                                <FormField
-                                                    control={form.control}
-                                                    name="phone"
-                                                    render={({ field }) => (
-                                                        <FormItem>
-                                                            <FormLabel>Phone Number</FormLabel>
-                                                            <FormControl>
-                                                                <Input placeholder="+1 (555) 000-0000" {...field} />
-                                                            </FormControl>
-                                                            <FormMessage />
-                                                        </FormItem>
-                                                    )}
-                                                />
-
-                                                {/** Company */}
-                                                <FormField
-                                                    control={form.control}
-                                                    name="company"
-                                                    render={({ field }) => (
-                                                        <FormItem>
-                                                            <FormLabel>Company Name</FormLabel>
-                                                            <FormControl>
-                                                                <Input placeholder="Acme Inc." {...field} />
-                                                            </FormControl>
-                                                            <FormMessage />
-                                                        </FormItem>
-                                                    )}
-                                                />
-                                            </div>
-
-                                            {/* Row 3 */}
-                                            <div className="grid md:grid-cols-2 gap-6">
-                                                {/** Company Size */}
-                                                <FormField
-                                                    control={form.control}
-                                                    name="companySize"
-                                                    render={({ field }) => (
-                                                        <FormItem>
-                                                            <FormLabel>Company Size</FormLabel>
-                                                            <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                                                <FormControl>
-                                                                    <SelectTrigger>
-                                                                        <SelectValue placeholder="Select company size" />
-                                                                    </SelectTrigger>
-                                                                </FormControl>
-                                                                <SelectContent>
-                                                                    {companySizes.map((size) => (
-                                                                        <SelectItem key={size} value={size}>
-                                                                            {size}
-                                                                        </SelectItem>
-                                                                    ))}
-                                                                </SelectContent>
-                                                            </Select>
-                                                            <FormMessage />
-                                                        </FormItem>
-                                                    )}
-                                                />
-
-                                                {/** Industry */}
-                                                <FormField
-                                                    control={form.control}
-                                                    name="industry"
-                                                    render={({ field }) => (
-                                                        <FormItem>
-                                                            <FormLabel>Industry</FormLabel>
-                                                            <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                                                <FormControl>
-                                                                    <SelectTrigger>
-                                                                        <SelectValue placeholder="Select industry" />
-                                                                    </SelectTrigger>
-                                                                </FormControl>
-                                                                <SelectContent>
-                                                                    {industries.map((i) => (
-                                                                        <SelectItem key={i} value={i}>
-                                                                            {i}
-                                                                        </SelectItem>
-                                                                    ))}
-                                                                </SelectContent>
-                                                            </Select>
-                                                            <FormMessage />
-                                                        </FormItem>
-                                                    )}
-                                                />
-                                            </div>
-
-                                            {/* Challenge */}
+                            <div className="card-elevated p-8">
+                                <Form {...form}>
+                                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                                        {/* Row 1 */}
+                                        <div className="grid md:grid-cols-2 gap-6">
+                                            {/** Name */}
                                             <FormField
                                                 control={form.control}
-                                                name="challenge"
+                                                name="name"
                                                 render={({ field }) => (
                                                     <FormItem>
-                                                        <FormLabel>What challenges are you looking to solve?</FormLabel>
+                                                        <FormLabel>Full Name</FormLabel>
                                                         <FormControl>
-                                                            <Textarea
-                                                                placeholder="Tell us about your current workflow challenges and what you hope to achieve..."
-                                                                className="min-h-[100px] resize-none"
-                                                                {...field}
-                                                            />
+                                                            <Input placeholder="John Doe" {...field} />
                                                         </FormControl>
                                                         <FormMessage />
                                                     </FormItem>
                                                 )}
                                             />
 
-                                            {/* Submit */}
-                                            <Button type="submit" size="lg" className="w-full">
-                                                Request Demo
-                                                <Play className="ml-2 h-4 w-4" />
-                                            </Button>
+                                            {/** Email */}
+                                            <FormField
+                                                control={form.control}
+                                                name="email"
+                                                render={({ field }) => (
+                                                    <FormItem>
+                                                        <FormLabel>Work Email</FormLabel>
+                                                        <FormControl>
+                                                            <Input placeholder="john@company.com" type="email" {...field} />
+                                                        </FormControl>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+                                        </div>
 
-                                            <p className="text-xs text-center text-muted-foreground">
-                                                By submitting this form, you agree to our privacy policy and terms of service.
-                                            </p>
-                                        </form>
-                                    </Form>
-                                </div>
-                            </motion.div>
-                        </div>
+                                        {/* Row 2 */}
+                                        <div className="grid md:grid-cols-2 gap-6">
+                                            {/** Phone */}
+                                            <FormField
+                                                control={form.control}
+                                                name="phone"
+                                                render={({ field }) => (
+                                                    <FormItem>
+                                                        <FormLabel>Phone Number</FormLabel>
+                                                        <FormControl>
+                                                            <Input placeholder="+1 (555) 000-0000" {...field} />
+                                                        </FormControl>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+
+                                            {/** Company */}
+                                            <FormField
+                                                control={form.control}
+                                                name="company"
+                                                render={({ field }) => (
+                                                    <FormItem>
+                                                        <FormLabel>Company Name</FormLabel>
+                                                        <FormControl>
+                                                            <Input placeholder="Acme Inc." {...field} />
+                                                        </FormControl>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+                                        </div>
+
+                                        {/* Row 3 */}
+                                        <div className="grid md:grid-cols-2 gap-6">
+                                            {/** Company Size */}
+                                            <FormField
+                                                control={form.control}
+                                                name="companySize"
+                                                render={({ field }) => (
+                                                    <FormItem>
+                                                        <FormLabel>Company Size</FormLabel>
+                                                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                            <FormControl>
+                                                                <SelectTrigger>
+                                                                    <SelectValue placeholder="Select company size" />
+                                                                </SelectTrigger>
+                                                            </FormControl>
+                                                            <SelectContent>
+                                                                {companySizes.map((size) => (
+                                                                    <SelectItem key={size} value={size}>
+                                                                        {size}
+                                                                    </SelectItem>
+                                                                ))}
+                                                            </SelectContent>
+                                                        </Select>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+
+                                            {/** Industry */}
+                                            <FormField
+                                                control={form.control}
+                                                name="industry"
+                                                render={({ field }) => (
+                                                    <FormItem>
+                                                        <FormLabel>Industry</FormLabel>
+                                                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                            <FormControl>
+                                                                <SelectTrigger>
+                                                                    <SelectValue placeholder="Select industry" />
+                                                                </SelectTrigger>
+                                                            </FormControl>
+                                                            <SelectContent>
+                                                                {industries.map((i) => (
+                                                                    <SelectItem key={i} value={i}>
+                                                                        {i}
+                                                                    </SelectItem>
+                                                                ))}
+                                                            </SelectContent>
+                                                        </Select>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+                                        </div>
+
+                                        {/* Challenge */}
+                                        <FormField
+                                            control={form.control}
+                                            name="challenge"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel>What challenges are you looking to solve?</FormLabel>
+                                                    <FormControl>
+                                                        <Textarea
+                                                            placeholder="Tell us about your current workflow challenges and what you hope to achieve..."
+                                                            className="min-h-[100px] resize-none"
+                                                            {...field}
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+
+                                        {/* Submit */}
+                                        <Button
+                                            type="submit"
+                                            size="lg"
+                                            className="w-full"
+                                            disabled={form.formState.isSubmitting}
+                                        >
+                                            {form.formState.isSubmitting ? "Submitting..." : "Request Demo"}
+                                            <Play className="ml-2 h-4 w-4" />
+                                        </Button>
+
+                                        <p className="text-xs text-center text-muted-foreground">
+                                            By submitting this form, you agree to our privacy policy and terms of service.
+                                        </p>
+                                    </form>
+                                </Form>
+                            </div>
+                        </motion.div>
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <Footer />
-            </div>
-        </>
+            <Footer />
+        </div>
     );
 }
