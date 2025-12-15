@@ -32,8 +32,18 @@ export function IntegrationsSection() {
                         transition={{ duration: 0.5 }}
                         className="text-3xl lg:text-4xl font-semibold text-foreground mb-4"
                     >
-                        Integrates with your entire stack.
+                        Your tools stay. The work runs itself.
                     </motion.h2>
+
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: 0.08 }}
+                        className="text-sm text-muted-foreground text-center mb-6"
+                    >
+                        Efficidex runs work across the systems you already use.
+                    </motion.p>
 
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -42,8 +52,10 @@ export function IntegrationsSection() {
                         transition={{ duration: 0.5, delay: 0.1 }}
                         className="text-lg text-muted-foreground"
                     >
-                        Efficidex automates workflows across your CRM, finance systems,
-                        support tools, internal databases, messaging apps, and more.
+                        Efficidex sits on top of the systems you already use and
+                        executes operational work end-to-end across them.
+                        No migrations. No rip-and-replace.
+
                     </motion.p>
                 </div>
 
@@ -81,7 +93,7 @@ export function IntegrationsSection() {
                 >
                     <Button asChild variant="pill-outline" size="lg" className="group">
                         <Link to="/integrations">
-                            Explore Integrations
+                            See how Efficidex connects →
                             <ArrowRight
                                 size={16}
                                 className="ml-2 transition-transform group-hover:translate-x-1"

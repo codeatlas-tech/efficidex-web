@@ -27,11 +27,22 @@ export default function Integrations() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="text-4xl font-bold mb-6"
+                        className="text-4xl font-bold mb-4"
                     >
                         All Your Systems. Fully Connected.
                     </motion.h1>
 
+                    {/* Context line */}
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.4, delay: 0.05 }}
+                        className="text-sm text-muted-foreground mb-6"
+                    >
+                        Systems Efficidex operates across today.
+                    </motion.p>
+
+                    {/* Main explanation */}
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -42,6 +53,7 @@ export default function Integrations() {
                         ecommerce, customer support, storage platforms, and internal systems.
                         Build workflows that run across every tool you rely on.
                     </motion.p>
+
                 </div>
             </section>
 
