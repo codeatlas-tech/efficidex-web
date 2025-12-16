@@ -10,7 +10,6 @@ import Product from "./pages/Product";
 import Industries from "./pages/Industries";
 import IndustryDetail from "./pages/IndustryDetail";
 import UseCases from "./pages/UseCases";
-import Pricing from "./pages/Pricing";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import Demo from "./pages/Demo";
@@ -34,7 +33,6 @@ export default function App() {
           {/* Core */}
           <Route path="/" element={<Index />} />
           <Route path="/product" element={<Product />} />
-          <Route path="/pricing" element={<Pricing />} />
           <Route path="/demo" element={<Demo />} />
 
           {/* Content */}

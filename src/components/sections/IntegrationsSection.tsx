@@ -20,9 +20,11 @@ const integrations = [
 
 export function IntegrationsSection() {
     return (
-        <section id="integrations" className="py-20 lg:py-32 bg-card border-y border-border">
+        <section
+            id="integrations"
+            className="py-20 lg:py-32 bg-card border-y border-border"
+        >
             <div className="section-container">
-
                 {/* Header */}
                 <div className="max-w-3xl mx-auto text-center mb-12">
                     <motion.h2
@@ -32,7 +34,7 @@ export function IntegrationsSection() {
                         transition={{ duration: 0.5 }}
                         className="text-3xl lg:text-4xl font-semibold text-foreground mb-4"
                     >
-                        Your tools stay. The work runs itself.
+                        Keep your stack. Eliminate the work.
                     </motion.h2>
 
                     <motion.p
@@ -42,7 +44,8 @@ export function IntegrationsSection() {
                         transition={{ duration: 0.4, delay: 0.08 }}
                         className="text-sm text-muted-foreground text-center mb-6"
                     >
-                        Efficidex runs work across the systems you already use.
+                        Efficidex executes operational tasks directly inside the tools you
+                        already use.
                     </motion.p>
 
                     <motion.p
@@ -52,14 +55,12 @@ export function IntegrationsSection() {
                         transition={{ duration: 0.5, delay: 0.1 }}
                         className="text-lg text-muted-foreground"
                     >
-                        Efficidex sits on top of the systems you already use and
-                        executes operational work end-to-end across them.
-                        No migrations. No rip-and-replace.
-
+                        No migrations. No workflows to rebuild. No teams to retrain.
+                        Your tools remain the source of truth — Efficidex does the work.
                     </motion.p>
                 </div>
 
-                {/* Pill Grid */}
+                {/* Integrations Pills */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -83,7 +84,7 @@ export function IntegrationsSection() {
                     ))}
                 </motion.div>
 
-                {/* CTA Button */}
+                {/* CTA */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -93,7 +94,7 @@ export function IntegrationsSection() {
                 >
                     <Button asChild variant="pill-outline" size="lg" className="group">
                         <Link to="/integrations">
-                            See how Efficidex connects →
+                            See how Efficidex connects
                             <ArrowRight
                                 size={16}
                                 className="ml-2 transition-transform group-hover:translate-x-1"
@@ -101,7 +102,6 @@ export function IntegrationsSection() {
                         </Link>
                     </Button>
                 </motion.div>
-
             </div>
         </section>
     );

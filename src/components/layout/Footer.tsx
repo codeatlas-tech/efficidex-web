@@ -20,7 +20,6 @@ const footerLinks: FooterSections = {
     ],
     product: [
         { label: "Product", href: "/product" },
-        { label: "Pricing", href: "/pricing" },
         { label: "Docs", href: "/docs" },
     ],
     resources: [

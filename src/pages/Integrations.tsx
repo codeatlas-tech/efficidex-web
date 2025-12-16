@@ -22,14 +22,13 @@ export default function Integrations() {
             {/* Hero */}
             <section className="pt-32 pb-16 border-b border-border">
                 <div className="section-container max-w-4xl mx-auto text-center">
-
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                         className="text-4xl font-bold mb-4"
                     >
-                        All Your Systems. Fully Connected.
+                        Operate Everything From the Stack You Already Use
                     </motion.h1>
 
                     {/* Context line */}
@@ -39,7 +38,7 @@ export default function Integrations() {
                         transition={{ duration: 0.4, delay: 0.05 }}
                         className="text-sm text-muted-foreground mb-6"
                     >
-                        Systems Efficidex operates across today.
+                        Tools Efficidex connects to and operates inside.
                     </motion.p>
 
                     {/* Main explanation */}
@@ -49,53 +48,54 @@ export default function Integrations() {
                         transition={{ duration: 0.5, delay: 0.1 }}
                         className="text-lg text-muted-foreground max-w-2xl mx-auto"
                     >
-                        Efficidex integrates deeply across CRM, finance, messaging,
-                        ecommerce, customer support, storage platforms, and internal systems.
-                        Build workflows that run across every tool you rely on.
+                        Efficidex works across your existing CRM, finance, messaging,
+                        support, ecommerce, storage, and internal systems to execute
+                        operational tasks end-to-end.
+                        No migrations. No new tools. Just execution across what you already run.
                     </motion.p>
-
                 </div>
             </section>
 
             {/* Categories */}
             <section className="py-20">
                 <div className="section-container max-w-5xl mx-auto space-y-16">
+                    {Object.entries(integrationCategories).map(
+                        ([category, items], idx) => (
+                            <motion.div
+                                key={category}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                            >
+                                <h2 className="text-2xl font-semibold mb-6">
+                                    {category} Systems
+                                </h2>
 
-                    {Object.entries(integrationCategories).map(([category, items], idx) => (
-                        <motion.div
-                            key={category}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: idx * 0.1 }}
-                        >
-                            <h2 className="text-2xl font-semibold mb-6">{category}</h2>
-
-                            <div className="flex flex-wrap gap-3">
-                                {items.map((item, index) => (
-                                    <motion.div
-                                        key={item}
-                                        initial={{ opacity: 0, scale: 0.9 }}
-                                        whileInView={{ opacity: 1, scale: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.3, delay: index * 0.05 }}
-                                        className="px-5 py-3 rounded-full border border-border bg-card text-sm font-medium 
-                                        text-foreground hover:border-primary/40 hover:shadow-md transition-all duration-200"
-                                    >
-                                        {item}
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </motion.div>
-                    ))}
-
+                                <div className="flex flex-wrap gap-3">
+                                    {items.map((item, index) => (
+                                        <motion.div
+                                            key={item}
+                                            initial={{ opacity: 0, scale: 0.9 }}
+                                            whileInView={{ opacity: 1, scale: 1 }}
+                                            viewport={{ once: true }}
+                                            transition={{ duration: 0.3, delay: index * 0.05 }}
+                                            className="px-5 py-3 rounded-full border border-border bg-card text-sm font-medium 
+                      text-foreground hover:border-primary/40 hover:shadow-md transition-all duration-200"
+                                        >
+                                            {item}
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        )
+                    )}
                 </div>
             </section>
 
             {/* API Docs Section */}
             <section className="py-20 bg-card border-t border-border">
                 <div className="section-container max-w-4xl mx-auto text-center">
-
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -103,7 +103,7 @@ export default function Integrations() {
                         transition={{ duration: 0.5 }}
                         className="text-3xl font-semibold mb-4"
                     >
-                        Build Custom Integrations with Our APIs
+                        Extend Efficidex With APIs and Webhooks
                     </motion.h2>
 
                     <motion.p
@@ -113,9 +113,9 @@ export default function Integrations() {
                         transition={{ duration: 0.5, delay: 0.1 }}
                         className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8"
                     >
-                        Whether you're integrating internal systems, legacy software,
-                        or advanced workflow automation, our APIs and webhook framework
-                        give you full flexibility to extend Efficidex.
+                        Connect internal tools, legacy systems, or custom workflows
+                        using Efficidex APIs. Trigger actions, exchange data, and
+                        orchestrate automation beyond off-the-shelf integrations.
                     </motion.p>
 
                     <motion.div
@@ -129,7 +129,7 @@ export default function Integrations() {
                             to="/docs"
                             className="px-6 py-3 rounded-full border border-primary text-primary font-medium cursor-pointer hover:bg-primary/10 transition-all inline-block"
                         >
-                            View API Documentation →
+                            Explore Developer Documentation →
                         </Link>
                     </motion.div>
                 </div>
