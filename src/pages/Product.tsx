@@ -6,7 +6,7 @@ import { AutonomousAgentsSection } from "@/components/sections/product/Autonomou
 import { WorkflowsEngineSection } from "@/components/sections/product/WorkflowsEngineSection";
 import { HumanApprovalSection } from "@/components/sections/product/HumanApprovalSection";
 import { AuditTrailsSection } from "@/components/sections/product/AuditTrailsSection";
-import { SynapticSection } from "@/components/sections/product/SynapticSection";
+import { BenthamAISection } from "@/components/sections/product/BenthamAISection";
 import { CTASection } from "@/components/sections/CTASection";
 import { VoiceAgentsSection } from "@/components/sections/product/VoiceAgentsSection";
 import { VoiceAgentsUseCasesSection } from "@/components/sections/product/VoiceAgentsUseCasesSection";
@@ -15,31 +15,52 @@ import { IndustryVoiceUseCasesSection } from "@/components/sections/product/Indu
 export default function Product() {
     return (
         <div className="min-h-screen bg-background">
-
             <Header />
 
             <main>
-                {/* Hero */}
+                {/* HERO */}
                 <section className="pt-32 pb-16 md:pt-40 md:pb-24">
                     <div className="section-container text-center">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 max-w-4xl mx-auto">
-                            The AI Operating System for Your Entire Business.
+                            Autonomous systems that run your business.
                         </h1>
+
                         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-                            One platform. Dozens of autonomous agents. Hundreds of workflows. Zero operational drag.
+                            Efficidex replaces operational teams with coordinated AI agents that
+                            execute work across departments — continuously, auditable, and under
+                            human control.
                         </p>
                     </div>
                 </section>
 
+                {/* REAL-TIME CONTROL */}
                 <CommandCentreSection />
+
+                {/* AI WORKFORCE */}
                 <AutonomousAgentsSection />
+
+                {/* VOICE: WHAT IT REPLACES */}
                 <VoiceAgentsUseCasesSection />
+
+                {/* VOICE: HOW IT WORKS */}
                 <VoiceAgentsSection />
+
+                {/* INDUSTRY-SPECIFIC VOICE */}
                 <IndustryVoiceUseCasesSection />
+
+                {/* EXECUTION ENGINE */}
                 <WorkflowsEngineSection />
+
+                {/* HUMAN GOVERNANCE */}
                 <HumanApprovalSection />
+
+                {/* AUDITABILITY */}
                 <AuditTrailsSection />
-                <SynapticSection />
+
+                {/* STRATEGIC ORCHESTRATION */}
+                <BenthamAISection />
+
+                {/* CTA */}
                 <CTASection />
             </main>
 

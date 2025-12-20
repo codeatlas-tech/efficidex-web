@@ -16,32 +16,32 @@ type OutputItem = {
 const outputs: OutputItem[] = [
     {
         icon: AlertCircle,
-        label: "Bottleneck insights",
-        description: "Identify workflow slowdowns",
+        label: "Operational bottlenecks",
+        description: "Detect cross-workflow slowdowns in real time",
     },
     {
         icon: TrendingDown,
-        label: "Cost reduction opportunities",
-        description: "Find savings across ops",
+        label: "Cost reduction levers",
+        description: "Identify waste across tools, labor, and execution",
     },
     {
         icon: BarChart2,
-        label: "SLA risks",
-        description: "Predict deadline failures",
+        label: "SLA & risk forecasting",
+        description: "Predict deadline failures before they happen",
     },
     {
         icon: Brain,
-        label: "Workload forecasting",
-        description: "Plan capacity proactively",
+        label: "Capacity & workload planning",
+        description: "Forecast demand and allocate agents proactively",
     },
     {
         icon: Lightbulb,
-        label: "Workflow improvements",
-        description: "AI-suggested optimizations",
+        label: "Execution improvements",
+        description: "Recommend concrete workflow and policy changes",
     },
 ];
 
-export function SynapticSection() {
+export function BenthamAISection() {
     return (
         <section className="py-20">
             <div className="section-container">
@@ -56,16 +56,19 @@ export function SynapticSection() {
                 >
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
                         <Brain size={18} />
-                        <span className="text-sm font-medium">Synaptic Intelligence</span>
+                        <span className="text-sm font-medium">
+                            Bentham AI — Strategic Orchestrator
+                        </span>
                     </div>
 
                     <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                        Your AI operations strategist.
+                        The CEO and COO of your AI workforce.
                     </h2>
 
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        Synaptic analyses cross-department patterns, highlights inefficiencies,
-                        predicts failures, and recommends improvements.
+                        Bentham AI continuously analyzes your entire business, coordinates
+                        department agents, anticipates risks, and drives execution-level
+                        improvements — with human oversight where it matters.
                     </p>
                 </motion.div>
 

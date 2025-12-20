@@ -10,20 +10,21 @@ type FeatureItem = {
 const features: FeatureItem[] = [
     {
         icon: Bot,
-        title: "Autonomous Agents",
-        description: "AI that thinks, reasons, and executes real operational work.",
+        title: "Autonomous AI Workforce",
+        description:
+            "AI agents that plan, decide, and execute real operational work — without human micromanagement.",
     },
     {
         icon: GitBranch,
-        title: "Cross-Department Workflows",
+        title: "End-to-End Business Execution",
         description:
-            "Agents coordinate like real teams — instantly, accurately, endlessly.",
+            "Agents coordinate across departments like real teams, completing workflows from input to outcome.",
     },
     {
         icon: ShieldCheck,
-        title: "Your Rules, Your Approvals",
+        title: "Control Without Bottlenecks",
         description:
-            "You decide what AI can execute and what needs human review.",
+            "You define policies, thresholds, and approval gates. Low-risk work runs autonomously. High-impact decisions come to you.",
     },
 ];
 
@@ -41,9 +42,9 @@ export function WhatWeDoSection() {
                         transition={{ duration: 0.5 }}
                         className="text-3xl lg:text-4xl font-semibold text-foreground mb-4"
                     >
-                        Stop automating tiny tasks.{" "}
+                        Stop automating tasks.{" "}
                         <span className="text-muted-foreground">
-                            Start automating entire operations.
+                            Start running your business autonomously.
                         </span>
                     </motion.h2>
 
@@ -54,9 +55,9 @@ export function WhatWeDoSection() {
                         transition={{ duration: 0.5, delay: 0.1 }}
                         className="text-lg text-muted-foreground"
                     >
-                        Most AI tools assist humans. Efficidex removes the manual work itself.
-                        Your company gets an autonomous workforce that executes, coordinates,
-                        and completes workflows end-to-end.
+                        Most AI tools assist people. Efficidex replaces the operational work itself.
+                        It deploys an autonomous workforce that executes, coordinates, and completes
+                        business operations end to end.
                     </motion.p>
                 </div>
 
@@ -85,7 +86,9 @@ export function WhatWeDoSection() {
                                 </h3>
 
                                 {/* Description */}
-                                <p className="text-muted-foreground">{feature.description}</p>
+                                <p className="text-muted-foreground">
+                                    {feature.description}
+                                </p>
                             </motion.div>
                         );
                     })}

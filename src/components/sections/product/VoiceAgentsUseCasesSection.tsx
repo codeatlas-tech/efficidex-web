@@ -11,44 +11,44 @@ import {
 const useCases = [
     {
         icon: PhoneIncoming,
-        title: "Inbound Support Calls",
+        title: "Inbound Issue Resolution",
         description:
-            "Answer customer calls instantly, understand intent, resolve issues, update tickets, and escalate only when required.",
-        examples: "Customer support, IT helpdesk, internal ops",
+            "Answer calls instantly, understand intent, resolve issues end-to-end, update systems, and escalate only when policy requires.",
+        examples: "Customer support, IT helpdesk, internal service desks",
     },
     {
         icon: PhoneOutgoing,
-        title: "Outbound Follow-ups",
+        title: "Proactive Outreach & Follow-ups",
         description:
-            "Automatically call leads, customers, or vendors to collect updates, confirmations, or missing information.",
+            "Autonomously call leads, customers, or vendors to collect updates, confirmations, or missing information.",
         examples: "Sales follow-ups, collections, vendor coordination",
     },
     {
         icon: CalendarCheck,
-        title: "Appointments & Scheduling",
+        title: "Scheduling Without Staff",
         description:
-            "Handle appointment booking, rescheduling, confirmations, and reminders without human involvement.",
+            "Book, reschedule, confirm, and remind appointments without human involvement.",
         examples: "Healthcare, logistics, professional services",
     },
     {
         icon: Headphones,
-        title: "Operations & Internal Calls",
+        title: "Internal Operations Calls",
         description:
-            "Call staff, teams, or partners to verify task completion, delays, or operational blockers.",
+            "Call teams, staff, or partners to verify task completion, delays, or operational blockers in real time.",
         examples: "Field ops, warehouses, manufacturing floors",
     },
     {
         icon: FileText,
-        title: "Information Collection",
+        title: "Structured Data Collection",
         description:
-            "Collect structured data over calls and automatically update CRMs, ERPs, or internal systems.",
+            "Collect verified information over voice and write it directly into CRMs, ERPs, or internal systems.",
         examples: "KYC, onboarding, surveys, audits",
     },
     {
         icon: Building2,
-        title: "Enterprise Call Automation",
+        title: "Call-Heavy Operations Replacement",
         description:
-            "Replace entire call-handling teams with AI voice agents that scale infinitely and work 24/7.",
+            "Replace entire call-handling functions with autonomous voice agents that scale infinitely and operate 24/7.",
         examples: "Shared services, BPO replacement",
     },
 ];
@@ -67,7 +67,7 @@ export function VoiceAgentsUseCasesSection() {
                         transition={{ duration: 0.5 }}
                         className="text-3xl lg:text-4xl font-semibold text-foreground mb-4"
                     >
-                        What Voice Agents Actually Do
+                        What voice agents replace in your business
                     </motion.h2>
 
                     <motion.p
@@ -77,8 +77,9 @@ export function VoiceAgentsUseCasesSection() {
                         transition={{ duration: 0.5, delay: 0.1 }}
                         className="text-lg text-muted-foreground"
                     >
-                        These aren’t IVRs or chatbots. Efficidex voice agents execute real operational work
-                        across customer-facing and internal processes.
+                        These aren’t IVRs or chatbots. Efficidex voice agents execute
+                        real operational work — handling calls, making decisions, and
+                        updating systems without human involvement.
                     </motion.p>
                 </div>
 
@@ -109,7 +110,9 @@ export function VoiceAgentsUseCasesSection() {
                                 </p>
 
                                 <p className="text-xs text-muted-foreground">
-                                    <span className="font-medium text-foreground">Used for:</span>{" "}
+                                    <span className="font-medium text-foreground">
+                                        Replaces:
+                                    </span>{" "}
                                     {useCase.examples}
                                 </p>
                             </motion.div>

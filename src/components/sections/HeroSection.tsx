@@ -22,7 +22,7 @@ export function HeroSection() {
                     >
                         <span className="flex h-2 w-2 rounded-full bg-accent animate-pulse" />
                         <span className="text-sm text-muted-foreground">
-                            Now automating 50+ enterprise workflows
+                            Replacing 15+ business tools with autonomous agents
                         </span>
                     </motion.div>
 
@@ -39,16 +39,16 @@ export function HeroSection() {
                         </span>
                     </motion.h1>
 
-                    {/* Sub-headline (UPDATED WITH VOICE AI AGENTS) */}
+                    {/* Sub-headline */}
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
                     >
-                        Efficidex replaces manual operational work across your entire company — HR,
-                        finance, sales, support, logistics, healthcare ops, and more — with reasoning
-                        agents and Voice AI Agents that run 24/7.
+                        Efficidex replaces 15+ business tools and up to 70% of operational workforce
+                        with autonomous agents that run your entire business — from strategy to
+                        execution — 24/7.
                     </motion.p>
 
                     {/* CTAs */}
@@ -58,7 +58,6 @@ export function HeroSection() {
                         transition={{ duration: 0.5, delay: 0.3 }}
                         className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6"
                     >
-                        {/* DEMO BUTTON — NOW LINKS TO /demo */}
                         <Button asChild variant="hero" size="xl" className="group">
                             <Link to="/demo">
                                 <Play size={18} className="mr-1" />
@@ -70,7 +69,6 @@ export function HeroSection() {
                             </Link>
                         </Button>
 
-                        {/* STRATEGY CALL BUTTON — NOW LINKS TO /contact */}
                         <Button asChild variant="hero-secondary" size="xl">
                             <Link to="/contact">
                                 Book a Strategy Call
@@ -78,14 +76,14 @@ export function HeroSection() {
                         </Button>
                     </motion.div>
 
-                    {/* Tagline */}
+                    {/* Trust Line */}
                     <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
                         className="text-sm text-muted-foreground"
                     >
-                        No hype. No hallucinations. Just actual work done.
+                        No dashboards. No tool sprawl. No manual work. Just businesses run by AI.
                     </motion.p>
 
                 </div>

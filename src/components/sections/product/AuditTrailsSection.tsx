@@ -12,7 +12,7 @@ type AuditEntry = {
 const auditEntries: AuditEntry[] = [
     { icon: Bot, action: "Invoice #4521 processed", actor: "Finance Agent", time: "10:42 AM", type: "agent" },
     { icon: User, action: "Approved vendor payment", actor: "John Smith", time: "10:45 AM", type: "human" },
-    { icon: Bot, action: "Payment initiated - $12,500", actor: "Finance Agent", time: "10:46 AM", type: "agent" },
+    { icon: Bot, action: "Payment initiated — $12,500", actor: "Finance Agent", time: "10:46 AM", type: "agent" },
     { icon: CheckCircle, action: "Transaction completed", actor: "System", time: "10:47 AM", type: "system" },
 ];
 
@@ -22,7 +22,7 @@ export function AuditTrailsSection() {
             <div className="section-container">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
 
-                    {/* LEFT: The audit trail card */}
+                    {/* LEFT: Audit trail */}
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -34,7 +34,9 @@ export function AuditTrailsSection() {
 
                             <div className="flex items-center gap-2 mb-6">
                                 <FileText size={20} className="text-primary" />
-                                <h3 className="font-semibold text-foreground">Audit Trail</h3>
+                                <h3 className="font-semibold text-foreground">
+                                    System Audit Trail
+                                </h3>
                             </div>
 
                             <div className="space-y-4">
@@ -80,7 +82,7 @@ export function AuditTrailsSection() {
                         </div>
                     </motion.div>
 
-                    {/* RIGHT: Description */}
+                    {/* RIGHT: Explanation */}
                     <motion.div
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -89,13 +91,13 @@ export function AuditTrailsSection() {
                         className="order-1 lg:order-2"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                            Every action. Every decision. Fully recorded.
+                            Every action. Every decision. Fully accountable.
                         </h2>
 
                         <p className="text-lg text-muted-foreground">
-                            Efficidex generates a complete audit trail for agents, tasks, workflows,
-                            departments, and users — automatically. Perfect for compliance, debugging,
-                            and accountability.
+                            Efficidex automatically records every agent action, human approval,
+                            system event, and outcome in a complete, immutable audit trail.
+                            Built for compliance, traceability, and operational trust.
                         </p>
                     </motion.div>
 

@@ -19,7 +19,7 @@ export default function JoinOurMission() {
                         transition={{ duration: 0.5 }}
                         className="text-4xl md:text-5xl font-bold mb-6"
                     >
-                        Join Our Mission
+                        We’re Building the Autonomous Layer of Business
                     </motion.h1>
 
                     <motion.p
@@ -28,9 +28,9 @@ export default function JoinOurMission() {
                         transition={{ delay: 0.1, duration: 0.5 }}
                         className="text-lg text-muted-foreground"
                     >
-                        Efficidex is building the autonomous operating layer for modern
-                        enterprises. We believe most operational work should not require
-                        humans at all — and we’re building the system that makes that real.
+                        Efficidex is building systems that execute real business operations
+                        without human coordination. Not copilots. Not dashboards.
+                        Autonomous execution at enterprise scale.
                     </motion.p>
                 </div>
             </section>
@@ -40,13 +40,12 @@ export default function JoinOurMission() {
                 <div className="section-container max-w-4xl mx-auto space-y-16">
 
                     <div className="space-y-6 text-center">
-                        <h2 className="text-3xl font-bold">Why We Exist</h2>
+                        <h2 className="text-3xl font-bold">Why This Exists</h2>
                         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                            Enterprises today run on fragile workflows, manual approvals,
-                            disconnected tools, and constant human intervention.
-                            We’re here to replace that entire operational layer with
-                            autonomous AI systems that execute work reliably, continuously,
-                            and at scale.
+                            Modern companies waste massive effort on coordination:
+                            approvals, handoffs, reporting, follow-ups, and tool glue.
+                            We’re replacing that entire layer with autonomous systems
+                            that plan, execute, and self-correct.
                         </p>
                     </div>
 
@@ -54,18 +53,18 @@ export default function JoinOurMission() {
                         {[
                             {
                                 icon: <Target className="w-6 h-6 text-accent" />,
-                                title: "A Focused Mission",
-                                desc: "Remove operational bottlenecks from businesses using autonomous AI agents.",
+                                title: "Clear Mission",
+                                desc: "Replace fragile operational workflows with autonomous execution.",
                             },
                             {
                                 icon: <Lightbulb className="w-6 h-6 text-accent" />,
-                                title: "A Real Problem",
-                                desc: "Most enterprise time is lost to coordination, not thinking. That’s broken.",
+                                title: "Real Problem",
+                                desc: "Most enterprise work exists because systems can’t act on their own.",
                             },
                             {
                                 icon: <Rocket className="w-6 h-6 text-accent" />,
-                                title: "A Long-Term Bet",
-                                desc: "Autonomous systems will run future companies. We’re building that core now.",
+                                title: "Long-Term Bet",
+                                desc: "Future companies will be run by software. We’re building that core.",
                             },
                         ].map((item) => (
                             <motion.div
@@ -90,11 +89,12 @@ export default function JoinOurMission() {
             {/* STATUS */}
             <section className="py-20 bg-card border-t border-border">
                 <div className="section-container max-w-3xl mx-auto text-center space-y-8">
-                    <h2 className="text-3xl font-bold">Where We Are Right Now</h2>
+                    <h2 className="text-3xl font-bold">Where We Are</h2>
                     <p className="text-muted-foreground text-lg">
-                        We’re early, product-driven, and building fast. We’re not hiring
-                        aggressively yet — but we actively talk to engineers, operators,
-                        researchers, and builders who resonate with what we’re creating.
+                        We’re early, focused, and execution-driven.
+                        We’re not mass-hiring or running open funnels.
+                        We talk to people who build infrastructure,
+                        ship systems, and think in first principles.
                     </p>
 
                     <div className="flex flex-col md:flex-row items-center justify-center gap-4">
@@ -112,24 +112,24 @@ export default function JoinOurMission() {
             {/* VALUES */}
             <section className="py-20">
                 <div className="section-container max-w-4xl mx-auto space-y-8 text-center">
-                    <h2 className="text-3xl font-bold">How We Think</h2>
+                    <h2 className="text-3xl font-bold">How We Work</h2>
 
                     <div className="grid md:grid-cols-3 gap-10">
                         {[
                             {
                                 icon: <Users className="w-6 h-6 text-accent" />,
-                                title: "People > Process",
-                                desc: "We optimize for clear thinkers, not rigid hierarchies.",
+                                title: "Small, Sharp Teams",
+                                desc: "We optimize for leverage, not headcount.",
                             },
                             {
                                 icon: <Lightbulb className="w-6 h-6 text-accent" />,
-                                title: "Clarity Over Noise",
-                                desc: "Simple systems beat complex explanations every time.",
+                                title: "Clarity First",
+                                desc: "If it can’t be explained simply, it’s not ready.",
                             },
                             {
                                 icon: <Rocket className="w-6 h-6 text-accent" />,
-                                title: "Speed With Intent",
-                                desc: "Move fast — but only in the direction that actually matters.",
+                                title: "Speed With Direction",
+                                desc: "Fast execution matters only when direction is right.",
                             },
                         ].map((value) => (
                             <motion.div
@@ -153,10 +153,10 @@ export default function JoinOurMission() {
             {/* CTA */}
             <section className="py-20 bg-primary/5 border-y border-primary/10">
                 <div className="section-container max-w-2xl mx-auto text-center space-y-6">
-                    <h2 className="text-3xl font-bold">Build the Future With Us</h2>
+                    <h2 className="text-3xl font-bold">Build What Comes Next</h2>
                     <p className="text-muted-foreground">
-                        If autonomous systems, enterprise infrastructure, and real-world AI
-                        excite you — we should talk.
+                        If you want to work on autonomous systems that actually run
+                        real companies — not demos or assistants — we should talk.
                     </p>
 
                     <Button asChild size="lg" variant="hero">

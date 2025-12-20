@@ -20,20 +20,70 @@ type IndustryItem = {
     icon: React.ElementType;
     name: string;
     description: string;
-    slug: string; // ★ NEW
+    slug: string;
 };
 
 const industries: IndustryItem[] = [
-    { icon: Heart, name: "Healthcare", description: "Patient flow, billing, insurance, labs, pharmacy", slug: "healthcare" },
-    { icon: Landmark, name: "Finance / FinTech", description: "KYC, underwriting, fraud, payments, compliance", slug: "finance" },
-    { icon: Code2, name: "SaaS", description: "Sales, CSM, support, renewals, revops", slug: "saas" },
-    { icon: Truck, name: "Logistics", description: "Orders, dispatch, routing, warehouse ops", slug: "logistics" },
-    { icon: ShoppingBag, name: "Retail & E-Commerce", description: "Inventory, pricing, returns, fulfillment", slug: "retail" },
-    { icon: Factory, name: "Manufacturing", description: "Production, QC, maintenance, planning", slug: "manufacturing" },
-    { icon: Hotel, name: "Hospitality", description: "Reservations, housekeeping, guest ops", slug: "hospitality" },
-    { icon: GraduationCap, name: "Education", description: "Admissions, records, fees, courses", slug: "education" },
-    { icon: Building2, name: "Real Estate", description: "Leads, visits, tenants, rent collection", slug: "real-estate" },
-    { icon: Briefcase, name: "Professional Services", description: "Projects, timesheets, billing", slug: "professional-services" },
+    {
+        icon: Heart,
+        name: "Healthcare",
+        description: "Patient operations, billing, insurance, compliance, labs, pharmacy",
+        slug: "healthcare",
+    },
+    {
+        icon: Landmark,
+        name: "Finance & FinTech",
+        description: "KYC, underwriting, fraud detection, payments, regulatory ops",
+        slug: "finance",
+    },
+    {
+        icon: Code2,
+        name: "SaaS",
+        description: "Sales ops, renewals, support, revenue operations, churn control",
+        slug: "saas",
+    },
+    {
+        icon: Truck,
+        name: "Logistics",
+        description: "Order flow, dispatch, routing, warehouse and fleet operations",
+        slug: "logistics",
+    },
+    {
+        icon: ShoppingBag,
+        name: "Retail & E-Commerce",
+        description: "Inventory, pricing, fulfillment, returns, customer operations",
+        slug: "retail",
+    },
+    {
+        icon: Factory,
+        name: "Manufacturing",
+        description: "Production planning, quality control, maintenance, supply chain",
+        slug: "manufacturing",
+    },
+    {
+        icon: Hotel,
+        name: "Hospitality",
+        description: "Reservations, guest services, housekeeping, front-desk operations",
+        slug: "hospitality",
+    },
+    {
+        icon: GraduationCap,
+        name: "Education",
+        description: "Admissions, records, fee management, course operations",
+        slug: "education",
+    },
+    {
+        icon: Building2,
+        name: "Real Estate",
+        description: "Lead handling, property ops, tenants, rent and maintenance",
+        slug: "real-estate",
+    },
+    {
+        icon: Briefcase,
+        name: "Professional Services",
+        description: "Project execution, utilization, billing, delivery operations",
+        slug: "professional-services",
+    },
 ];
 
 export function IndustriesSection() {
@@ -50,8 +100,13 @@ export function IndustriesSection() {
                         transition={{ duration: 0.5 }}
                         className="text-3xl lg:text-4xl font-semibold text-foreground mb-4"
                     >
-                        Purpose-built for your industry.
+                        Autonomous operations, tuned to your industry.
                     </motion.h2>
+
+                    <p className="text-lg text-muted-foreground">
+                        Efficidex deploys industry-specific agents that understand real
+                        workflows, regulations, and edge cases — not generic automation.
+                    </p>
                 </div>
 
                 {/* Industries Grid */}
@@ -96,7 +151,7 @@ export function IndustriesSection() {
                 >
                     <Button asChild variant="pill-outline" size="lg" className="group">
                         <Link to="/industries">
-                            View Industry Details
+                            Explore industry-specific agents
                             <ArrowRight
                                 size={16}
                                 className="ml-2 transition-transform group-hover:translate-x-1"

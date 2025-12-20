@@ -7,7 +7,7 @@ import {
     Shield,
     DollarSign,
     Layers,
-    PhoneCall, // ★ Added for Voice AI benefit
+    PhoneCall,
 } from "lucide-react";
 
 type BenefitItem = {
@@ -16,20 +16,38 @@ type BenefitItem = {
 };
 
 const benefits: BenefitItem[] = [
-    { icon: TrendingUp, text: "Replaces repetitive operational labor" },
-    { icon: Layers, text: "Executes thousands of workflows simultaneously" },
-    { icon: Clock, text: "Works 24/7 with perfect consistency" },
-    { icon: Eye, text: "Understands files, SOPs, systems, and business logic" },
-
-    // ★ NEW BENEFIT — Voice AI Agents
+    {
+        icon: TrendingUp,
+        text: "Replaces up to 70% of repetitive operational workforce across departments",
+    },
+    {
+        icon: Layers,
+        text: "Executes thousands of cross-functional workflows in parallel, without bottlenecks",
+    },
+    {
+        icon: Clock,
+        text: "Operates 24/7 with consistent quality — no delays, no downtime",
+    },
+    {
+        icon: Eye,
+        text: "Understands your files, SOPs, systems, and business logic natively",
+    },
     {
         icon: PhoneCall,
-        text: "Voice AI agents that handle all customer calls, support requests, and routing in real time",
+        text: "Voice agents handle inbound calls, support, scheduling, and routing autonomously",
     },
-
-    { icon: Shield, text: "Auditable, controlled, compliant" },
-    { icon: DollarSign, text: "Costs 5–10× less than building manual ops teams" },
-    { icon: Check, text: "Works across your entire business, not just back-office" },
+    {
+        icon: Shield,
+        text: "Every action is auditable, controlled, and compliant by design",
+    },
+    {
+        icon: DollarSign,
+        text: "Delivers 5–10× cost reduction compared to building and managing ops teams",
+    },
+    {
+        icon: Check,
+        text: "Runs your entire business — not just back-office or single functions",
+    },
 ];
 
 export function BenefitsSection() {
@@ -48,7 +66,7 @@ export function BenefitsSection() {
                                 transition={{ duration: 0.5 }}
                                 className="text-3xl lg:text-4xl font-semibold text-foreground mb-6"
                             >
-                                Scale operations without scaling headcount.
+                                Scale your business without scaling headcount.
                             </motion.h2>
 
                             <motion.p
@@ -58,8 +76,9 @@ export function BenefitsSection() {
                                 transition={{ duration: 0.5, delay: 0.1 }}
                                 className="text-lg text-muted-foreground"
                             >
-                                Efficidex is your autonomous operational backbone — handling the
-                                work that used to require entire teams.
+                                Efficidex is the autonomous operating layer that replaces tools,
+                                workflows, and operational labor — so growth doesn’t require
+                                more people.
                             </motion.p>
                         </div>
 

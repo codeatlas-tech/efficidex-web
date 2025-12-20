@@ -1,3 +1,11 @@
 User-agent: *
 Allow: /
+
+# Block internal or non-public routes (adjust if needed)
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /internal/
+
+# Sitemap
 Sitemap: https://efficidex.com/sitemap.xml

@@ -13,11 +13,11 @@ type HighlightItem = {
 };
 
 const highlights: HighlightItem[] = [
-    { icon: Activity, label: "Live activity feed" },
-    { icon: Bot, label: "Active agents" },
-    { icon: BarChart3, label: "Task heatmaps" },
+    { icon: Activity, label: "Live execution feed" },
+    { icon: Bot, label: "Active agents & workload" },
+    { icon: BarChart3, label: "Task density & bottlenecks" },
     { icon: GitBranch, label: "Workflow dependencies" },
-    { icon: AlertTriangle, label: "SLA & risk alerts" },
+    { icon: AlertTriangle, label: "SLA breaches & risk alerts" },
 ];
 
 export function CommandCentreSection() {
@@ -34,13 +34,13 @@ export function CommandCentreSection() {
                         transition={{ duration: 0.5 }}
                     >
                         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                            Your real-time operational cockpit.
+                            The command centre for your AI workforce.
                         </h2>
 
                         <p className="text-lg text-muted-foreground mb-8">
-                            See everything your AI workforce is doing — across every department,
-                            client, and workflow. Live tasks, SLAs, agent health, approvals, alerts,
-                            bottlenecks — all in one place.
+                            Monitor, supervise, and intervene across your entire business in real time.
+                            See exactly what every agent is executing, where work is flowing, where
+                            risk is building, and when human input is required — all from one place.
                         </p>
 
                         <div className="grid grid-cols-2 gap-4">
@@ -56,7 +56,9 @@ export function CommandCentreSection() {
                                         className="flex items-center gap-3 p-3 rounded-lg bg-card border border-border"
                                     >
                                         <Icon size={20} className="text-primary" />
-                                        <span className="text-sm font-medium text-foreground">{item.label}</span>
+                                        <span className="text-sm font-medium text-foreground">
+                                            {item.label}
+                                        </span>
                                     </motion.div>
                                 );
                             })}

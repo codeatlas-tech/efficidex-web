@@ -13,29 +13,39 @@ type FAQ = {
 
 const faqs: FAQ[] = [
     {
-        question: "What does Efficidex automate?",
+        question: "What does Efficidex actually run?",
         answer:
-            "Efficidex automates entire operational workflows across HR, finance, sales, support, healthcare ops, logistics, manufacturing, and more. Our autonomous agents handle end-to-end processes, not just individual tasks.",
+            "Efficidex runs end-to-end operational execution across departments — including sales operations, finance, HR, customer support, operations, and industry-specific workflows. It doesn’t automate isolated tasks; it owns complete workflows from input to outcome.",
     },
     {
-        question: "Is it safe for sensitive operations?",
+        question: "How is this different from automation tools or AI assistants?",
         answer:
-            "Absolutely. Every high-impact action requires human approval and is logged with a complete audit trail. You control what the AI can execute autonomously and what needs your sign-off.",
+            "Automation tools follow static rules and still require humans to operate them. AI assistants help humans work faster. Efficidex is an autonomous execution system — agents plan, coordinate, and execute work on their own, with humans supervising outcomes instead of performing tasks.",
     },
     {
-        question: "How do approvals work?",
+        question: "Is it safe to let AI make business decisions?",
         answer:
-            "Sensitive actions are routed to your Human Approval Dashboard. You can review context, approve, reject, or add notes. Everything is timestamped and logged for compliance.",
+            "Yes — autonomy is bounded. Low-risk actions execute automatically. High-impact decisions require explicit human approval. Every action is logged, explainable, reversible, and auditable. You control the decision boundaries at all times.",
     },
     {
-        question: "Can I customize workflows?",
+        question: "How do approvals and oversight work?",
         answer:
-            "Yes. Policies, thresholds, escalation rules, and approval chains are fully configurable. You can adapt Efficidex to match your existing SOPs or design new optimized processes.",
+            "Efficidex routes sensitive actions to a centralized approval dashboard with full context, impact analysis, and recommendations. You can approve, reject, or modify actions. All decisions are timestamped and stored for compliance and review.",
     },
     {
-        question: "Do I need engineers to use it?",
+        question: "Can Efficidex adapt to our existing processes?",
         answer:
-            "No. Workflows auto-generate based on your industry and company profile. Non-technical teams can configure rules, monitor agents, and manage approvals through our intuitive interface.",
+            "Yes. Efficidex learns from your SOPs, documents, historical data, and operating patterns. Policies, thresholds, escalation rules, and approval chains are configurable so the system aligns with how your business actually runs.",
+    },
+    {
+        question: "Do we need engineers or AI experts to use it?",
+        answer:
+            "No. Agents, workflows, and dashboards are generated automatically based on your industry and company profile. Non-technical teams manage operations, approvals, and performance through a simple interface.",
+    },
+    {
+        question: "What happens if the AI makes a mistake?",
+        answer:
+            "All actions are reversible, monitored, and continuously evaluated. Confidence thresholds, validation layers, and human-in-the-loop controls prevent costly errors. The system learns from outcomes and improves over time.",
     },
 ];
 
@@ -53,7 +63,7 @@ export function FAQSection() {
                         transition={{ duration: 0.5 }}
                         className="text-3xl lg:text-4xl font-semibold text-foreground text-center mb-12"
                     >
-                        Still curious?
+                        Frequently asked questions
                     </motion.h2>
 
                     {/* Accordion */}

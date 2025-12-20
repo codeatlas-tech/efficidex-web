@@ -16,11 +16,12 @@ export function CTASection() {
                     className="max-w-3xl mx-auto text-center"
                 >
                     <h2 className="text-3xl lg:text-4xl font-semibold text-primary-foreground mb-4">
-                        Ready to automate your operations?
+                        Ready to run your business with autonomous AI?
                     </h2>
 
                     <p className="text-lg text-primary-foreground/80 mb-8">
-                        Join leading enterprises that trust Efficidex to run their autonomous workflows.
+                        Replace fragmented tools and operational headcount with a single
+                        system that plans, executes, and optimizes work for you — 24/7.
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

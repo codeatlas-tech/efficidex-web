@@ -4,27 +4,27 @@ import { PhoneCall, Headphones, Clock, CheckCircle } from "lucide-react";
 const voiceCapabilities = [
     {
         icon: PhoneCall,
-        title: "AI Voice Agents",
+        title: "Autonomous Voice Execution",
         description:
-            "Autonomous voice agents that handle inbound and outbound calls with natural, human-like conversations.",
+            "Voice agents that don’t just talk — they reason, decide, and execute actions during live calls.",
     },
     {
         icon: Headphones,
-        title: "Customer & Ops Calls",
+        title: "Customer & Operations Coverage",
         description:
-            "Answer support calls, follow-ups, appointment confirmations, and internal ops calls automatically.",
+            "Handle support calls, follow-ups, scheduling, collections, and internal ops calls without human agents.",
     },
     {
         icon: Clock,
-        title: "24/7 Call Handling",
+        title: "Always-On Availability",
         description:
-            "Never miss a call. Voice agents operate continuously without queues, fatigue, or downtime.",
+            "Operate 24/7 with no queues, no missed calls, and consistent performance at any volume.",
     },
     {
         icon: CheckCircle,
-        title: "Logged & Auditable",
+        title: "Fully Logged & Governed",
         description:
-            "Every call is transcribed, logged, and auditable inside the Efficidex command centre.",
+            "Every call is transcribed, actioned, and recorded with full auditability inside the command centre.",
     },
 ];
 
@@ -42,7 +42,7 @@ export function VoiceAgentsSection() {
                         transition={{ duration: 0.5 }}
                         className="text-3xl lg:text-4xl font-semibold text-foreground mb-4"
                     >
-                        Voice Agents That Actually Do the Work
+                        Voice agents that replace human call work.
                     </motion.h2>
 
                     <motion.p
@@ -52,8 +52,9 @@ export function VoiceAgentsSection() {
                         transition={{ duration: 0.5, delay: 0.1 }}
                         className="text-lg text-muted-foreground"
                     >
-                        Efficidex voice agents answer calls, make calls, collect information,
-                        trigger workflows, and update systems — without human intervention.
+                        Efficidex voice agents answer and place calls, gather information,
+                        make decisions, trigger workflows, and update systems —
+                        all without human intervention.
                     </motion.p>
                 </div>
 

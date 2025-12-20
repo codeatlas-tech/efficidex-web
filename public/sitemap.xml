@@ -1,12 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Core -->
   <url>
     <loc>https://efficidex.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
+
   <url>
     <loc>https://efficidex.com/product</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
+
   <url>
     <loc>https://efficidex.com/industries</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
+
+  <!-- Industry detail pages -->
+  <url><loc>https://efficidex.com/industries/healthcare</loc></url>
+  <url><loc>https://efficidex.com/industries/finance</loc></url>
+  <url><loc>https://efficidex.com/industries/manufacturing</loc></url>
+  <url><loc>https://efficidex.com/industries/retail</loc></url>
+  <url><loc>https://efficidex.com/industries/logistics</loc></url>
+  <url><loc>https://efficidex.com/industries/insurance</loc></url>
+  <url><loc>https://efficidex.com/industries/saas</loc></url>
+  <url><loc>https://efficidex.com/industries/hospitality</loc></url>
+  <url><loc>https://efficidex.com/industries/education</loc></url>
+  <url><loc>https://efficidex.com/industries/real-estate</loc></url>
+  <url><loc>https://efficidex.com/industries/professional-services</loc></url>
+
+  <!-- Use cases -->
+  <url>
+    <loc>https://efficidex.com/use-cases</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- Integrations -->
+  <url>
+    <loc>https://efficidex.com/integrations</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Docs -->
+  <url>
+    <loc>https://efficidex.com/docs</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Demo / Contact -->
+  <url>
+    <loc>https://efficidex.com/demo</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://efficidex.com/contact</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Company -->
+  <url>
+    <loc>https://efficidex.com/join-our-mission</loc>
+  </url>
+
+  <!-- Legal -->
+  <url>
+    <loc>https://efficidex.com/privacy</loc>
+    <changefreq>yearly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://efficidex.com/terms</loc>
+    <changefreq>yearly</changefreq>
+  </url>
+
 </urlset>

@@ -2,29 +2,34 @@ import { useEffect, useRef, useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { motion } from "framer-motion";
-import { Key, Server, Webhook, Book } from "lucide-react";
+import {
+    Key,
+    Server,
+    Webhook,
+    Book,
+    ShieldCheck,
+    GitBranch,
+} from "lucide-react";
 import { ApiConsole } from "@/components/docs/ApiConsole";
 
-
-
 const sections = [
+    { id: "overview", label: "Overview" },
     { id: "authentication", label: "Authentication" },
-    { id: "workflow-trigger", label: "Trigger a Workflow" },
-    { id: "webhooks", label: "Webhooks" },
+    { id: "workflow-trigger", label: "Trigger Workflows" },
+    { id: "approvals", label: "Human Approvals" },
+    { id: "webhooks", label: "Webhooks & Events" },
     { id: "api-structure", label: "API Structure" },
 ];
 
 export default function Docs() {
-    const [active, setActive] = useState("authentication");
+    const [active, setActive] = useState("overview");
     const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setActive(entry.target.id);
-                    }
+                    if (entry.isIntersecting) setActive(entry.target.id);
                 });
             },
             { threshold: 0.4 }
@@ -43,10 +48,9 @@ export default function Docs() {
 
     return (
         <div className="min-h-screen bg-background">
-
-
             <Header />
 
+            {/* HERO */}
             <section className="pt-32 pb-10 border-b border-border">
                 <div className="section-container max-w-5xl mx-auto">
                     <motion.h1
@@ -55,25 +59,26 @@ export default function Docs() {
                         transition={{ duration: 0.5 }}
                         className="text-4xl font-bold"
                     >
-                        Efficidex API Documentation
+                        Efficidex Execution API
                     </motion.h1>
 
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
-                        className="text-lg text-muted-foreground max-w-2xl mt-4"
+                        className="text-lg text-muted-foreground max-w-3xl mt-4"
                     >
-                        Build custom workflows, integrate internal systems, trigger autonomous agents,
-                        and extend the full power of Efficidex through our REST APIs.
+                        Delegate real business work to autonomous agents.
+                        Trigger workflows, enforce approvals, receive auditable outcomes —
+                        without writing brittle automation logic.
                     </motion.p>
                 </div>
             </section>
 
-            {/* Main Docs Layout */}
-            <div className="section-container max-w-6xl mx-auto py-16 grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-12">
+            {/* MAIN */}
+            <div className="section-container max-w-6xl mx-auto py-16 grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-12">
 
-                {/* Sidebar */}
+                {/* SIDEBAR */}
                 <aside className="hidden lg:block sticky top-32 h-max">
                     <nav className="space-y-3">
                         {sections.map((s) => (
@@ -81,8 +86,8 @@ export default function Docs() {
                                 key={s.id}
                                 href={`#${s.id}`}
                                 className={`block text-sm px-3 py-2 rounded-md transition-colors ${active === s.id
-                                    ? "bg-primary/10 text-primary font-medium"
-                                    : "text-muted-foreground hover:text-foreground"
+                                        ? "bg-primary/10 text-primary font-medium"
+                                        : "text-muted-foreground hover:text-foreground"
                                     }`}
                             >
                                 {s.label}
@@ -91,24 +96,43 @@ export default function Docs() {
                     </nav>
                 </aside>
 
-                {/* Content */}
-                <div className="space-y-20">
+                {/* CONTENT */}
+                <div className="space-y-24">
 
-                    {/* Authentication */}
-                    <div id="authentication" ref={registerRef("authentication")}>
+                    {/* OVERVIEW */}
+                    <section id="overview" ref={registerRef("overview")}>
+                        <SectionHeader icon={GitBranch} title="How the API Works" />
+                        <p className="text-muted-foreground mb-4">
+                            The Efficidex API is not a task runner or rules engine.
+                            Every API call delegates responsibility to an autonomous workflow
+                            managed by agents, approvals, and audit trails.
+                        </p>
+
+                        <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
+                            <li>You trigger intent — not steps</li>
+                            <li>Agents decide execution paths</li>
+                            <li>High-risk actions require human approval</li>
+                            <li>Every outcome is logged and reversible</li>
+                        </ul>
+                    </section>
+
+                    {/* AUTH */}
+                    <section id="authentication" ref={registerRef("authentication")}>
                         <SectionHeader icon={Key} title="Authentication" />
                         <p className="text-muted-foreground mb-4">
-                            Authenticate requests using your API Key:
+                            All requests are authenticated using a Bearer API key.
+                            Keys are scoped per workspace and environment.
                         </p>
 
                         <CodeBlock>{`Authorization: Bearer YOUR_API_KEY`}</CodeBlock>
-                    </div>
+                    </section>
 
-                    {/* Workflow Trigger */}
-                    <div id="workflow-trigger" ref={registerRef("workflow-trigger")}>
+                    {/* WORKFLOWS */}
+                    <section id="workflow-trigger" ref={registerRef("workflow-trigger")}>
                         <SectionHeader icon={Server} title="Trigger a Workflow" />
                         <p className="text-muted-foreground mb-4">
-                            Trigger any workflow by sending a POST request:
+                            Trigger a full business workflow. Agents handle validation,
+                            execution, approvals, retries, and escalation automatically.
                         </p>
 
                         <CodeBlock>{`POST https://api.efficidex.com/v1/workflows/{workflow_id}/run
@@ -117,68 +141,89 @@ Authorization: Bearer YOUR_API_KEY
 
 {
   "input": {
-    "customer_id": "12345",
-    "priority": "high"
+    "entity_id": "12345",
+    "priority": "high",
+    "context": {
+      "source": "crm",
+      "requested_by": "system"
+    }
   }
 }`}</CodeBlock>
 
-                        <h3 className="font-semibold mt-6 mb-2">JavaScript Example</h3>
-                        <CodeBlock>{`await fetch("https://api.efficidex.com/v1/workflows/xyz/run", {
+                        <h3 className="font-semibold mt-6 mb-2">JavaScript</h3>
+                        <CodeBlock>{`await fetch("https://api.efficidex.com/v1/workflows/payroll/run", {
   method: "POST",
   headers: {
+    "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json",
-    Authorization: "Bearer YOUR_API_KEY",
   },
   body: JSON.stringify({
-    input: { customer_id: "12345", priority: "high" },
+    input: { entity_id: "12345", priority: "high" },
   }),
 });`}</CodeBlock>
 
-                        <h3 className="font-semibold mt-6 mb-2">Python Example</h3>
+                        <h3 className="font-semibold mt-6 mb-2">Python</h3>
                         <CodeBlock>{`import requests
 
 requests.post(
-    "https://api.efficidex.com/v1/workflows/xyz/run",
-    headers={"Authorization": "Bearer YOUR_API_KEY"},
-    json={"input": {"customer_id": "12345", "priority": "high"}}
+  "https://api.efficidex.com/v1/workflows/payroll/run",
+  headers={"Authorization": "Bearer YOUR_API_KEY"},
+  json={"input": {"entity_id": "12345", "priority": "high"}}
 )`}</CodeBlock>
-                    </div>
+                    </section>
 
-                    {/* Webhooks */}
-                    <div id="webhooks" ref={registerRef("webhooks")}>
-                        <SectionHeader icon={Webhook} title="Webhooks" />
+                    {/* APPROVALS */}
+                    <section id="approvals" ref={registerRef("approvals")}>
+                        <SectionHeader icon={ShieldCheck} title="Human Approval Flow" />
                         <p className="text-muted-foreground mb-4">
-                            Receive real-time events for workflow start, completion, or human approvals:
+                            Workflows that exceed risk thresholds pause automatically
+                            and route actions to the approval dashboard.
+                        </p>
+
+                        <CodeBlock>{`{
+  "status": "awaiting_approval",
+  "approval_id": "apr_789",
+  "action": "pay_vendor",
+  "amount": 45230,
+  "requested_by": "Finance Agent"
+}`}</CodeBlock>
+                    </section>
+
+                    {/* WEBHOOKS */}
+                    <section id="webhooks" ref={registerRef("webhooks")}>
+                        <SectionHeader icon={Webhook} title="Webhooks & Events" />
+                        <p className="text-muted-foreground mb-4">
+                            Subscribe to execution events for observability and downstream systems.
                         </p>
 
                         <CodeBlock>{`{
   "event": "workflow.completed",
-  "workflow_id": "xyz",
+  "workflow_id": "payroll",
+  "execution_id": "exe_123",
   "timestamp": 1714525100000,
-  "output": {
-    "status": "approved",
-    "result": {...}
+  "result": {
+    "status": "success",
+    "approved": true
   }
 }`}</CodeBlock>
-                    </div>
+                    </section>
 
-                    {/* API Structure */}
-                    <div id="api-structure" ref={registerRef("api-structure")}>
+                    {/* STRUCTURE */}
+                    <section id="api-structure" ref={registerRef("api-structure")}>
                         <SectionHeader icon={Book} title="API Structure" />
                         <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-                            <li><code>/v1/workflows</code> — Run workflows & fetch results</li>
-                            <li><code>/v1/agents</code> — Trigger AI agents (coming soon)</li>
-                            <li><code>/v1/integrations</code> — Sync external systems</li>
-                            <li><code>/v1/webhooks</code> — Configure webhook endpoints</li>
+                            <li><code>/v1/workflows</code> — Execute autonomous workflows</li>
+                            <li><code>/v1/executions</code> — Inspect runs, outcomes, logs</li>
+                            <li><code>/v1/approvals</code> — Review & resolve human checkpoints</li>
+                            <li><code>/v1/webhooks</code> — Subscribe to system events</li>
                         </ul>
-                    </div>
+                    </section>
 
-                    {/* Interactive API Console */}
-                    <div id="api-console" ref={registerRef("api-console")}>
+                    {/* CONSOLE */}
+                    <section>
                         <h2 className="text-2xl font-semibold mb-4">Try the API Live</h2>
                         <ApiConsole />
-                    </div>
-
+                    </section>
 
                 </div>
             </div>
@@ -188,7 +233,7 @@ requests.post(
     );
 }
 
-/* Components Used In The Page */
+/* COMPONENTS */
 
 function SectionHeader({ icon: Icon, title }: any) {
     return (

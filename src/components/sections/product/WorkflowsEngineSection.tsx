@@ -7,12 +7,12 @@ type Workflow = {
 };
 
 const workflows: Workflow[] = [
-    { name: "Payroll", steps: ["Calculate", "Approve", "Process", "Disburse"] },
-    { name: "Lead-to-Deal", steps: ["Lead", "Qualify", "Proposal", "Contract"] },
+    { name: "Payroll Execution", steps: ["Calculate", "Approve", "Process", "Disburse"] },
+    { name: "Lead-to-Revenue", steps: ["Capture", "Qualify", "Propose", "Contract"] },
     { name: "Order Fulfillment", steps: ["Order", "Pick", "Pack", "Dispatch"] },
-    { name: "Claims Processing", steps: ["Claim", "Verify", "Approve", "Settle"] },
-    { name: "Production", steps: ["Plan", "Produce", "QC", "Ship"] },
-    { name: "Compliance", steps: ["Collect", "Validate", "Report", "Archive"] },
+    { name: "Claims Resolution", steps: ["Receive", "Verify", "Approve", "Settle"] },
+    { name: "Production Operations", steps: ["Plan", "Produce", "QC", "Ship"] },
+    { name: "Compliance Reporting", steps: ["Collect", "Validate", "Report", "Archive"] },
 ];
 
 export function WorkflowsEngineSection() {
@@ -29,12 +29,13 @@ export function WorkflowsEngineSection() {
                     className="text-center mb-12"
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                        End-to-end automation. No patches, no hacks.
+                        Business workflows executed end to end.
                     </h2>
 
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        Efficidex handles workflows the way humans do — logically, sequentially,
-                        and contextually.
+                        Efficidex doesn’t stitch together scripts or automations.
+                        It executes complete workflows the way real teams do —
+                        with context, sequencing, approvals, and accountability.
                     </p>
                 </motion.div>
 
@@ -49,7 +50,9 @@ export function WorkflowsEngineSection() {
                             transition={{ duration: 0.4, delay: index * 0.1 }}
                             className="p-6 rounded-2xl border border-border bg-card hover:border-primary/30 hover:shadow-md transition-all duration-300"
                         >
-                            <h3 className="font-semibold text-foreground mb-4">{workflow.name}</h3>
+                            <h3 className="font-semibold text-foreground mb-4">
+                                {workflow.name}
+                            </h3>
 
                             <div className="flex items-center flex-wrap gap-2">
                                 {workflow.steps.map((step, stepIndex) => (
@@ -58,9 +61,11 @@ export function WorkflowsEngineSection() {
                                             {step}
                                         </span>
 
-                                        {/* Connector Arrow */}
                                         {stepIndex < workflow.steps.length - 1 && (
-                                            <ArrowRight size={14} className="text-muted-foreground" />
+                                            <ArrowRight
+                                                size={14}
+                                                className="text-muted-foreground"
+                                            />
                                         )}
                                     </div>
                                 ))}

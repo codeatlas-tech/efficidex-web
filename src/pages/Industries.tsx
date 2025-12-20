@@ -11,7 +11,6 @@ export default function Industries() {
 
     return (
         <div className="min-h-screen bg-background">
-
             <Header />
 
             <main>
@@ -19,11 +18,13 @@ export default function Industries() {
                 <section className="pt-32 pb-16 md:pt-40 md:pb-24">
                     <div className="section-container text-center">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 max-w-4xl mx-auto">
-                            AI automation tailored to your industry.
+                            Autonomous operations, built for your industry.
                         </h1>
 
                         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-                            Different industries run differently. Efficidex adapts by generating the right agents, workflows, KPIs, and dashboards instantly.
+                            Every industry runs differently. Efficidex deploys industry-specific
+                            agents, workflows, controls, and KPIs so real work gets executed —
+                            not just automated.
                         </p>
                     </div>
                 </section>
@@ -33,8 +34,6 @@ export default function Industries() {
                     <div className="section-container">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {industriesArray.map((industry, index) => {
-
-
                                 return (
                                     <motion.div
                                         key={industry.slug}
@@ -48,7 +47,7 @@ export default function Industries() {
                                             className="group block p-6 rounded-2xl border border-border bg-card hover:border-primary/30 hover:shadow-lg transition-all duration-300"
                                         >
                                             <div className="flex items-start gap-4">
-                                                {/* Use heroEmoji instead of icon */}
+                                                {/* Industry Emoji */}
                                                 <div className="text-3xl p-3 rounded-xl bg-secondary">
                                                     {industry.heroImage}
                                                 </div>

@@ -20,11 +20,11 @@ const agentTypes: AgentType[] = [
     { icon: Users, label: "HR Agents", count: "12+" },
     { icon: Wallet, label: "Finance Agents", count: "10+" },
     { icon: BarChart, label: "Sales Agents", count: "8+" },
-    { icon: HeadphonesIcon, label: "Support Agents", count: "9+" },
+    { icon: HeadphonesIcon, label: "Customer Support Agents", count: "9+" },
     { icon: Truck, label: "Logistics Agents", count: "11+" },
     { icon: Stethoscope, label: "Healthcare Agents", count: "15+" },
     { icon: Factory, label: "Manufacturing Agents", count: "8+" },
-    { icon: Bot, label: "Custom Agents", count: "∞" },
+    { icon: Bot, label: "Custom Agents", count: "Unlimited" },
 ];
 
 export function AutonomousAgentsSection() {
@@ -41,11 +41,13 @@ export function AutonomousAgentsSection() {
                     className="text-center mb-12"
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                        Your new digital workforce.
+                        A full workforce — without hiring anyone.
                     </h2>
+
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        70+ specialized agents trained for HR, finance, sales, support, logistics, healthcare,
-                        manufacturing, and more. They reason, execute, coordinate, and escalate when needed.
+                        Efficidex deploys a coordinated workforce of specialized AI agents across
+                        every department. They execute real operational work, collaborate across
+                        functions, and escalate decisions only when human judgment is required.
                     </p>
                 </motion.div>
 
@@ -67,8 +69,13 @@ export function AutonomousAgentsSection() {
                                     <Icon size={24} className="text-primary" />
                                 </div>
 
-                                <h3 className="font-semibold text-foreground mb-1">{agent.label}</h3>
-                                <p className="text-sm text-muted-foreground">{agent.count} agents</p>
+                                <h3 className="font-semibold text-foreground mb-1">
+                                    {agent.label}
+                                </h3>
+
+                                <p className="text-sm text-muted-foreground">
+                                    {agent.count} production-ready agents
+                                </p>
                             </motion.div>
                         );
                     })}

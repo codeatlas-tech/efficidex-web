@@ -13,54 +13,54 @@ import {
 const healthcareUseCases = [
   {
     icon: CalendarCheck,
-    title: "Appointment Scheduling & Reminders",
+    title: "Appointment Scheduling & Load Reduction",
     description:
-      "AI voice agents book, reschedule, and confirm appointments, reducing no-shows and front-desk load.",
+      "Voice agents autonomously book, reschedule, and confirm appointments, reducing no-shows and eliminating front-desk bottlenecks.",
   },
   {
     icon: PhoneOutgoing,
-    title: "Patient Follow-ups",
+    title: "Post-Visit & Care Follow-ups",
     description:
-      "Automatically call patients for post-visit check-ins, medication reminders, and lab follow-ups.",
+      "Automatically conduct post-visit check-ins, medication reminders, and lab-result follow-ups at scale.",
   },
   {
     icon: ClipboardList,
-    title: "Pre-Visit Information Collection",
+    title: "Pre-Visit Intake & Verification",
     description:
-      "Collect symptoms, insurance details, and consent before visits and sync directly into systems.",
+      "Collect symptoms, insurance details, and patient consent before visits and sync directly into clinical systems.",
   },
   {
     icon: FileCheck,
-    title: "Billing & Insurance Queries",
+    title: "Billing & Insurance Operations",
     description:
-      "Handle routine billing questions, claim status checks, and payment reminders without staff.",
+      "Handle routine billing questions, claim-status checks, and payment reminders without human staff.",
   },
 ];
 
 const financeUseCases = [
   {
     icon: CreditCard,
-    title: "Payment Reminders & Collections",
+    title: "Collections & Payment Resolution",
     description:
-      "Call customers for overdue payments, negotiate timelines, and log outcomes automatically.",
+      "Autonomously contact customers for overdue payments, negotiate timelines, and log outcomes with full auditability.",
   },
   {
     icon: ShieldAlert,
-    title: "KYC & Verification Calls",
+    title: "KYC & Compliance Verification",
     description:
-      "Verify customer identity, confirm submitted documents, and flag inconsistencies in real time.",
+      "Verify customer identity, confirm submitted documents, and flag inconsistencies in real time for compliance teams.",
   },
   {
     icon: Wallet,
-    title: "Account & Transaction Queries",
+    title: "Account & Transaction Support",
     description:
-      "Answer balance checks, transaction explanations, and basic account questions instantly.",
+      "Resolve balance checks, transaction explanations, and routine account inquiries instantly — without agents.",
   },
   {
     icon: PhoneOutgoing,
-    title: "Loan & Application Follow-ups",
+    title: "Loan & Application Progression",
     description:
-      "Call applicants to collect missing information and push applications forward without agents.",
+      "Proactively follow up with applicants to collect missing information and accelerate approval workflows.",
   },
 ];
 
@@ -78,7 +78,7 @@ export function IndustryVoiceUseCasesSection() {
             transition={{ duration: 0.5 }}
             className="text-3xl lg:text-4xl font-semibold text-foreground mb-4"
           >
-            Voice Agents Built for Real Industries
+            Voice agents built for regulated, real-world operations
           </motion.h2>
 
           <motion.p
@@ -88,8 +88,9 @@ export function IndustryVoiceUseCasesSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-lg text-muted-foreground"
           >
-            These are not generic bots. Efficidex voice agents are trained to operate
-            inside regulated, high-volume environments.
+            These are not generic bots or IVRs. Efficidex voice agents are trained
+            to operate inside high-volume, regulated environments where accuracy,
+            compliance, and outcomes matter.
           </motion.p>
         </div>
 

@@ -1,7 +1,14 @@
 import { motion } from "framer-motion";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { Users, Lightbulb, Target, PhoneCall, Workflow, Cpu } from "lucide-react";
+import {
+    Users,
+    Lightbulb,
+    Target,
+    PhoneCall,
+    Workflow,
+    Cpu,
+} from "lucide-react";
 
 export default function About() {
     return (
@@ -10,212 +17,200 @@ export default function About() {
 
             {/* Hero */}
             <section className="pt-32 pb-20 bg-gradient-to-b from-primary/5 to-background">
-                <div className="section-container text-center max-w-3xl mx-auto">
+                <div className="section-container text-center max-w-4xl mx-auto">
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                         className="text-4xl md:text-5xl font-bold mb-6"
                     >
-                        We build AI that actually runs your business.
+                        We’re Building the Future of Work
                     </motion.h1>
 
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1, duration: 0.5 }}
-                        className="text-lg text-muted-foreground"
+                        className="text-lg text-muted-foreground leading-relaxed"
                     >
-                        Efficidex is an autonomous operations platform that replaces manual work,
-                        repetitive decisions, and inbound calls with reliable AI agents — including
-                        voice AI that can handle conversations end-to-end.
+                        The world doesn’t need more software tools. It needs software
+                        that does the work.
+                        <br />
+                        <br />
+                        Efficidex AI is the autonomous business operating system — AI
+                        agents that don’t just assist your team, they replace repetitive
+                        operational work entirely. We’re not building another SaaS tool
+                        for humans to use. We’re building an AI workforce that runs your
+                        business 24/7.
                     </motion.p>
                 </div>
             </section>
 
-            {/* Story */}
+            {/* Mission */}
             <section className="py-20">
                 <div className="section-container max-w-4xl mx-auto space-y-8">
                     <motion.h2
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         transition={{ duration: 0.5 }}
-                        className="text-3xl font-bold text-center mb-8"
+                        className="text-3xl font-bold text-center"
                     >
-                        Why Efficidex Exists
+                        Our Mission
                     </motion.h2>
 
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.4 }}
-                        className="text-muted-foreground text-lg leading-relaxed"
-                    >
-                        Most companies don’t fail because of bad ideas — they fail because operations
-                        don’t scale. Calls go unanswered. Requests pile up. Teams burn time on work that
-                        should never require a human in the first place.
-                    </motion.p>
-
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1, duration: 0.4 }}
-                        className="text-muted-foreground text-lg leading-relaxed"
-                    >
-                        We started Efficidex to eliminate that friction. Instead of adding more people,
-                        more tools, or more dashboards, we build autonomous AI agents that *do the work* —
-                        across voice, chat, internal systems, and workflows.
-                    </motion.p>
+                    <p className="text-muted-foreground text-lg leading-relaxed">
+                        Make world-class business operations accessible to every company,
+                        regardless of size.
+                        <br />
+                        <br />
+                        Today, only large enterprises can afford operations teams,
+                        expensive consultants, and enterprise software. Small and
+                        mid-sized businesses struggle with a Frankenstein stack of 15+
+                        tools, burning cash while competitors move faster.
+                        <br />
+                        <br />
+                        We’re changing that. With Efficidex, a 10-person startup gets the
+                        same operational excellence as a 1,000-person company — at
+                        one-tenth the cost.
+                    </p>
                 </div>
             </section>
 
-            {/* What We Build */}
+            {/* Problem */}
             <section className="py-20 bg-card border-t border-border">
-                <div className="section-container max-w-5xl mx-auto">
-                    <h2 className="text-3xl font-bold text-center mb-12">
-                        What Makes Efficidex Different
+                <div className="section-container max-w-5xl mx-auto space-y-10">
+                    <h2 className="text-3xl font-bold text-center">
+                        The Problem We’re Solving
                     </h2>
 
-                    <div className="grid md:grid-cols-3 gap-10">
-                        {[
-                            {
-                                icon: <PhoneCall className="w-6 h-6 text-accent" />,
-                                title: "Voice AI Agents",
-                                desc: "AI agents that answer calls, understand intent, resolve requests, and escalate only when needed — 24/7.",
-                            },
-                            {
-                                icon: <Workflow className="w-6 h-6 text-accent" />,
-                                title: "Autonomous Workflows",
-                                desc: "From CRM updates to support resolution to operations tasks — agents execute real workflows, not scripts.",
-                            },
-                            {
-                                icon: <Cpu className="w-6 h-6 text-accent" />,
-                                title: "Built for Control",
-                                desc: "Human approval gates, audit trails, and predictable behavior — no hallucinations, no black boxes.",
-                            },
-                        ].map((item) => (
-                            <motion.div
-                                key={item.title}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.4 }}
-                                className="card-elevated p-6 text-center space-y-4"
-                            >
-                                <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-accent/10 mx-auto">
-                                    {item.icon}
-                                </div>
-                                <h4 className="font-semibold">{item.title}</h4>
-                                <p className="text-muted-foreground text-sm">{item.desc}</p>
-                            </motion.div>
-                        ))}
+                    <div className="text-muted-foreground text-lg leading-relaxed space-y-6">
+                        <p>
+                            Businesses are bleeding money.
+                        </p>
+
+                        <ul className="list-disc list-inside space-y-3">
+                            <li>
+                                $50K–200K per year on disconnected SaaS tools
+                            </li>
+                            <li>
+                                $500K–2M per year on operational roles doing repetitive
+                                work
+                            </li>
+                            <li>
+                                200+ hours per month manually integrating systems and
+                                fixing errors
+                            </li>
+                        </ul>
+
+                        <p className="font-medium text-foreground">
+                            Total waste: $750K–$2.2M per company, every year.
+                        </p>
+
+                        <p>
+                            AI is already good enough to do most of this work — better,
+                            faster, and cheaper. But current AI solutions miss the mark.
+                        </p>
                     </div>
                 </div>
             </section>
 
-            {/* Mission & Vision */}
+            {/* Solution */}
             <section className="py-20">
-                <div className="section-container grid md:grid-cols-2 gap-16">
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="space-y-4"
-                    >
-                        <h3 className="text-2xl font-semibold">Our Mission</h3>
-                        <p className="text-muted-foreground leading-relaxed">
-                            To replace manual operational work with dependable AI agents — starting
-                            with voice, support, and back-office workflows.
-                        </p>
-                    </motion.div>
+                <div className="section-container max-w-6xl mx-auto">
+                    <h2 className="text-3xl font-bold text-center mb-12">
+                        Our Solution: The Autonomous Business OS
+                    </h2>
 
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="space-y-4"
-                    >
-                        <h3 className="text-2xl font-semibold">Our Vision</h3>
-                        <p className="text-muted-foreground leading-relaxed">
-                            A world where businesses scale without hiring bottlenecks — where AI
-                            handles execution and humans focus on judgment and strategy.
-                        </p>
-                    </motion.div>
+                    <div className="grid md:grid-cols-3 gap-10">
+                        <div className="card-elevated p-6 space-y-4">
+                            <h4 className="font-semibold">
+                                Bentham AI — Strategic Orchestrator
+                            </h4>
+                            <p className="text-muted-foreground text-sm">
+                                Analyzes your business in real time, creates strategy,
+                                coordinates all AI agents, and makes autonomous decisions
+                                with human oversight. Continuously learns and optimizes.
+                            </p>
+                        </div>
+
+                        <div className="card-elevated p-6 space-y-4">
+                            <h4 className="font-semibold">
+                                Universal Agents — AI Workforce
+                            </h4>
+                            <p className="text-muted-foreground text-sm">
+                                Specialized agents for Sales, Marketing, Finance, HR,
+                                Operations, Customer Success, and Legal — executing real
+                                business work end to end.
+                            </p>
+                        </div>
+
+                        <div className="card-elevated p-6 space-y-4">
+                            <h4 className="font-semibold">
+                                Industry Agents — Built-In Expertise
+                            </h4>
+                            <p className="text-muted-foreground text-sm">
+                                Vertical-specific intelligence for healthcare, retail,
+                                manufacturing, real estate, construction, professional
+                                services, and more.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Differentiation */}
+            <section className="py-20 bg-card border-t border-border">
+                <div className="section-container max-w-5xl mx-auto space-y-10">
+                    <h2 className="text-3xl font-bold text-center">
+                        What Makes Us Different
+                    </h2>
+
+                    <ul className="space-y-6 text-muted-foreground text-lg leading-relaxed">
+                        <li>
+                            <strong className="text-foreground">
+                                We don’t assist. We replace.
+                            </strong>{" "}
+                            Efficidex agents execute work autonomously so you wake up to
+                            work already done.
+                        </li>
+                        <li>
+                            <strong className="text-foreground">
+                                One platform. Everything.
+                            </strong>{" "}
+                            Replace 15+ tools with a single system and source of truth.
+                        </li>
+                        <li>
+                            <strong className="text-foreground">
+                                True intelligence, not rules.
+                            </strong>{" "}
+                            Agents reason, learn, and adapt to your business over time.
+                        </li>
+                        <li>
+                            <strong className="text-foreground">
+                                Built for SMBs first.
+                            </strong>{" "}
+                            Deploy in days. Starting at $499/month.
+                        </li>
+                    </ul>
                 </div>
             </section>
 
             {/* Values */}
-            <section className="py-20 bg-card border-t border-border">
-                <div className="section-container">
-                    <h2 className="text-3xl font-bold text-center mb-12">How We Build</h2>
+            <section className="py-20">
+                <div className="section-container max-w-4xl mx-auto space-y-10">
+                    <h2 className="text-3xl font-bold text-center">Our Values</h2>
 
-                    <div className="grid md:grid-cols-3 gap-10">
-                        {[
-                            {
-                                icon: <Lightbulb className="w-6 h-6 text-accent" />,
-                                title: "Practical AI",
-                                desc: "If it doesn’t reliably work in production, we don’t ship it.",
-                            },
-                            {
-                                icon: <Users className="w-6 h-6 text-accent" />,
-                                title: "Human-in-the-Loop",
-                                desc: "AI executes. Humans stay in control where it matters.",
-                            },
-                            {
-                                icon: <Target className="w-6 h-6 text-accent" />,
-                                title: "Outcome First",
-                                desc: "We care about tickets closed, calls handled, and hours saved — not demos.",
-                            },
-                        ].map((value) => (
-                            <motion.div
-                                key={value.title}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.4 }}
-                                className="card-elevated p-6 text-center space-y-4"
-                            >
-                                <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-accent/10 mx-auto">
-                                    {value.icon}
-                                </div>
-                                <h4 className="font-semibold">{value.title}</h4>
-                                <p className="text-muted-foreground text-sm">{value.desc}</p>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA */}
-            <section className="py-20 bg-primary/5 border-t border-primary/10">
-                <div className="section-container text-center max-w-2xl mx-auto">
-                    <h2 className="text-3xl font-bold mb-4">
-                        See autonomous operations in action
-                    </h2>
-                    <p className="text-muted-foreground mb-6">
-                        Experience how Efficidex voice and workflow agents handle real business work.
-                    </p>
-
-                    <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-                        <LinkButton href="/demo" label="Try the Demo" />
-                        <LinkButton href="/contact" label="Talk to Us" variant="secondary" />
-                    </div>
+                    <ul className="space-y-4 text-muted-foreground text-lg leading-relaxed">
+                        <li><strong className="text-foreground">Action over credentials.</strong></li>
+                        <li><strong className="text-foreground">Autonomy is the goal.</strong></li>
+                        <li><strong className="text-foreground">SMBs deserve enterprise tools.</strong></li>
+                        <li><strong className="text-foreground">Transparency & safety.</strong></li>
+                        <li><strong className="text-foreground">Customer obsession.</strong></li>
+                    </ul>
                 </div>
             </section>
 
             <Footer />
         </div>
-    );
-}
-
-function LinkButton({ href, label, variant = "primary" }) {
-    const base = "px-6 py-3 rounded-full font-medium transition-all";
-    const styles =
-        variant === "primary"
-            ? `${base} bg-primary text-primary-foreground hover:bg-primary/90`
-            : `${base} bg-background border border-border hover:bg-secondary`;
-
-    return (
-        <a href={href} className={styles}>
-            {label}
-        </a>
     );
 }

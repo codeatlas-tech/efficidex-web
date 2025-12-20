@@ -17,21 +17,21 @@ type ApprovalItem = {
 const approvalItems: ApprovalItem[] = [
     {
         id: 1,
-        task: "Payroll disbursement - $45,230",
+        task: "Payroll disbursement — $45,230",
         department: "Finance",
         time: "2 min ago",
         status: "pending",
     },
     {
         id: 2,
-        task: "New vendor onboarding - Acme Corp",
+        task: "New vendor onboarding — Acme Corp",
         department: "Procurement",
         time: "5 min ago",
         status: "pending",
     },
     {
         id: 3,
-        task: "Leave approval - 3 requests",
+        task: "Leave approvals — 3 requests",
         department: "HR",
         time: "12 min ago",
         status: "pending",
@@ -52,18 +52,19 @@ export function HumanApprovalSection() {
                         transition={{ duration: 0.5 }}
                     >
                         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                            You stay in control. AI handles the rest.
+                            Autonomy with clear human control.
                         </h2>
 
                         <p className="text-lg text-muted-foreground mb-6">
-                            Any sensitive action gets routed to your approval dashboard.
-                            Approve, reject, add notes — everything is logged and auditable.
+                            Efficidex executes routine work autonomously. High-impact or
+                            policy-sensitive actions are routed to you for approval with
+                            full context, recommendations, and risk indicators.
                         </p>
 
                         <div className="flex flex-wrap gap-3">
                             <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 text-green-600">
                                 <CheckCircle2 size={18} />
-                                <span className="text-sm font-medium">Approve</span>
+                                <span className="text-sm font-medium">Approve & Execute</span>
                             </div>
 
                             <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 text-red-600">
@@ -73,7 +74,7 @@ export function HumanApprovalSection() {
 
                             <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 text-blue-600">
                                 <MessageSquare size={18} />
-                                <span className="text-sm font-medium">Add Notes</span>
+                                <span className="text-sm font-medium">Add Guidance</span>
                             </div>
                         </div>
                     </motion.div>
@@ -90,7 +91,7 @@ export function HumanApprovalSection() {
                             {/* Header */}
                             <div className="p-4 border-b border-border bg-secondary/50">
                                 <h3 className="font-semibold text-foreground">
-                                    Pending Approvals
+                                    Pending Human Approvals
                                 </h3>
                             </div>
 
